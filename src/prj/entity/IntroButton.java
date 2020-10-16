@@ -1,7 +1,5 @@
 package prj.entity;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 
 public class IntroButton {
@@ -23,6 +21,7 @@ public class IntroButton {
 		this.width = width;
 		this.height = height;
 		this.text = text;
+		
 	}
 
 	public void paint(Graphics g) {

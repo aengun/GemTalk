@@ -1,22 +1,30 @@
 package prj.canvas;
 
 import java.awt.Canvas;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 
-public class GameCanvas extends Canvas{//½ÃÇè¿ë Å¬·¡½º
+import prj.entity.GameBackground;
+import prj.entity.MyCard;
+import prj.entity.MyCardListener;
 
-	private Image img;
+public class GameCanvas extends Canvas {
+
+	public static Canvas instance;
+	
+	private MyCard myCard;
+	
+	private GameBackground gameBackground;
+	
 	public GameCanvas() {
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		img = tk.getImage("res/pc1.png");
+		instance = this;
+		
+		gameBackground = new GameBackground();
+		
+		myCard.setMyCardListener(new MyCardListener() {
+			
+			@Override
+			public void onWin() {
+				// ê²Œì„ì—ì„œ ìš°ìŠ¹í–ˆì„ ë•Œì˜ ì†ŒìŠ¤ì½”ë“œ
+			}
+		});
 	}
-
-	
-	@Override
-	public void paint(Graphics g) {
-		g.drawImage(img, 0,0, this);
-	}
-	
 }

@@ -24,11 +24,10 @@ public class GameFrame extends Frame {
 	}
 
 	public void switchCanvas(RuleCanvas oldCanvas, Class newCanvas) throws InstantiationException, IllegalAccessException {
-		//½ÃÇè¿ë ¸Þ¼Òµå
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 		
 		remove(oldCanvas);
 		
 		add((Canvas)newCanvas.newInstance());
-		setVisible(true);
 	}
 }

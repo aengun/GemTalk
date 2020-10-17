@@ -29,17 +29,17 @@ public class RuleCanvas extends Canvas{
 				int x =e.getX();
 				int y =e.getY();
 				
-				if(button.click(x,y)) {
-					try {
-						prj.GameFrame.instance.switchCanvas(RuleCanvas.this, GameCanvas.class);
-					} catch (InstantiationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IllegalAccessException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+//				if(button.click(x,y)) {
+//					try {
+//						prj.GameFrame.instance.switchCanvas(RuleCanvas.this, GameCanvas.class);
+//					} catch (InstantiationException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					} catch (IllegalAccessException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+//				}
 				
 			}
 			

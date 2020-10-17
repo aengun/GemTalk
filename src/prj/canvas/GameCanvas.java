@@ -19,12 +19,12 @@ public class GameCanvas extends Canvas {
 		
 		gameBackground = new GameBackground();
 		
-		myCard.setMyCardListener(new MyCardListener() {
-			
-			@Override
-			public void onWin() {
-				// 게임에서 우승했을 때의 소스코드
-			}
-		});
+//		myCard.setMyCardListener(new MyCardListener() {
+//			
+//			@Override
+//			public void onWin() {
+//				// 게임에서 우승했을 때의 소스코드
+//			}
+//		});
 	}
 }

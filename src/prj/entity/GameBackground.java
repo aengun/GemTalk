@@ -16,14 +16,14 @@ public class GameBackground {
 	
 	static {
 		try {
-			img = ImageIO.read(new File("경로"));
+			img = ImageIO.read(new File("res/pc1.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public GameBackground() {
-		this(0, 0, "경로");
+		this(0, 0, "res/pc1.png");
 	}
 
 	public GameBackground(double x, double y, String string) {

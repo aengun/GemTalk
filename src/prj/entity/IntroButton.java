@@ -1,5 +1,6 @@
 package prj.entity;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class IntroButton {
@@ -21,11 +22,31 @@ public class IntroButton {
 		this.width = width;
 		this.height = height;
 		this.text = text;
-		
+
 	}
 
 	public void paint(Graphics g) {
 
+		g.setColor(Color.PINK);
+		g.fillRoundRect((int) x, (int) y, (int) width, (int) height, 20, 20);
+		g.setColor(Color.BLACK);
+		g.drawString(text, (int) (x + 20), (int) (y + height / 2));
+
+	}
+
+	public boolean isSelected(int x, int y) {
+		
+		int w = (int) this.width;
+		int h = (int) this.height;
+		int x1 = (int) this.x - w / 2;
+		int y1 = (int) this.y - h + 13;
+		int x2 = x1 + w;
+		int y2 = y1 + h;
+
+		if ((x1 < x && x < x2) && (y1 < y && y < y2))
+			return true;
+
+		return false;
 	}
 
 	public double getX() {

@@ -1,8 +1,14 @@
 package prj.entity;
 
-public abstract class Card {
+import java.awt.Graphics;
+import java.awt.Image;
 
-	// Ä«µå »çÀÌÁî
+public abstract class Card {
+	
+	private int x;
+	private int y;
+	
+	// ì¹´ë“œ ì‚¬ì´ì¦ˆ
 	private int width;
 	private int height;
 
@@ -10,23 +16,43 @@ public abstract class Card {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void paint() {
-
+	public void paint(Graphics g) {
+		
+		int x;
+		int y;
+		int w;
+		int h;
+		Image img;
+		
+		g.drawImage(img, x, y, w, h, observer);
+		
 	}
 
 	public void update() {
-
+		
+		
 	}
 
-	public void isSelected() {
-
+	public int isSelected(int x, int y) {
+		
+		int w = this.width;
+		int h = this.height;
+		int x1 = this.x;
+		int y1 = this.y;
+		int x2 = x1;
+		int y2 = y1;
+		
+		return 0;
+		
 	}
 
 	public void zoom() {
-
+		
+		
 	}
 
-	public void move() {
-
+	public void move(int x, int y) {
+		
+		
 	}
 }

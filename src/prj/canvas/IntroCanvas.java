@@ -3,12 +3,16 @@ package prj.canvas;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import prj.GameFrame;
 import prj.entity.IntroBackground;
 import prj.entity.IntroButton;
 
 public class IntroCanvas extends Canvas {
 
+	public static IntroCanvas instance;
 	private IntroButton button1;
 	private IntroButton button2;
 	private IntroButton button3;
@@ -17,10 +21,11 @@ public class IntroCanvas extends Canvas {
 	private IntroBackground background;
 
 	public IntroCanvas() {
+		instance = this;
 
-		button1 = new IntroButton(50, 100, 100, 50, "Strat"); // Á¶Á¤ ÇÊ¿ä
-		button1 = new IntroButton(50, 200, 100, 50, "Rule"); // Á¶Á¤ ÇÊ¿ä
-		button1 = new IntroButton(50, 300, 100, 50, "Exit"); // Á¶Á¤ ÇÊ¿ä
+		button1 = new IntroButton(1000, 350, 120, 70, "Strat"); // ì¡°ì • í•„ìš”
+		button2 = new IntroButton(1000, 450, 120, 70, "Rule"); // ì¡°ì • í•„ìš”
+		button3 = new IntroButton(1000, 550, 120, 70, "Exit"); // ì¡°ì • í•„ìš”
 
 		buttons = new IntroButton[3];
 		buttons[0] = button1;
@@ -28,6 +33,25 @@ public class IntroCanvas extends Canvas {
 		buttons[2] = button3;
 
 		background = new IntroBackground();
+
+		addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int x = e.getX();
+				int y = e.getY();
+
+				try {
+					prj.GameFrame.instance.switchCanvas(IntroCanvas.this, GameCanvas.class);
+				} catch (InstantiationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 
 	}
 

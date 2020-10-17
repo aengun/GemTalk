@@ -13,7 +13,7 @@ public abstract class Card {
 	private int dy;
 
 	// 카드 사이즈
-	public static int width;
+	public static int width;     
 	public static int height;
 	public static Image img;
 	public static String imgSrc;

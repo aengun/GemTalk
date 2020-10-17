@@ -1,13 +1,18 @@
 package prj.entity;
 
-public abstract class QuestionCard extends Card {
-
+public class QuestionCard extends Card {
+	
 	public QuestionCard() {
 		
 	}
 
-	public void qustion() {
+	public QuestionCard(int width, int height, String imgSrc) {
+		
+	}
+
+	public void question() {
 
 	}
 
+	
 }

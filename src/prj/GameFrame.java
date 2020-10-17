@@ -20,7 +20,6 @@ public class GameFrame extends Frame {
 //		ruleCanvas = new RuleCanvas();
 //		gameCanvas = new GameCanvas();
 		add(introCanvas);
-
 		setSize(1200, 700);
 		setVisible(true);
 
@@ -28,7 +27,6 @@ public class GameFrame extends Frame {
 
 	public void switchCanvas(RuleCanvas oldCanvas, Class newCanvas)
 			throws InstantiationException, IllegalAccessException {
-		// ����� �޼ҵ�
 
 		remove(oldCanvas);
 

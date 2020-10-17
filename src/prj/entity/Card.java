@@ -2,12 +2,12 @@ package prj.entity;
 
 public abstract class Card {
 
-	// 카드 사이즈
 	private int width;
 	private int height;
+	
+	private int count;
 
 	public Card() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void paint() {
@@ -29,4 +29,14 @@ public abstract class Card {
 	public void move() {
 
 	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	
 }

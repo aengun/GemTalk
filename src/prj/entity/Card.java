@@ -3,17 +3,21 @@ package prj.entity;
 import java.awt.Graphics;
 import java.awt.Image;
 
+<<<<<<< HEAD
 public abstract class Card {
 	
 	private int x;
 	private int y;
 	
 	// 카드 사이즈
+=======
+>>>>>>> jaehee/main
 	private int width;
 	private int height;
+	
+	private int count;
 
 	public Card() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void paint(Graphics g) {
@@ -55,4 +59,14 @@ public abstract class Card {
 		
 		
 	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	
 }

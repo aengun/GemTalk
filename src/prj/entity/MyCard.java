@@ -6,6 +6,8 @@ public class MyCard {
 
 	private int width;
 	private int height;
+	private int x; // 나의 카드 목록 좌표 x
+	private int y; // 나의 카드 목록 좌표 y
 	
 	private MyCardListener myCardListener;
 	
@@ -28,7 +30,7 @@ public class MyCard {
 		myCardListener.onWin();
 	}
 
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
 
@@ -36,7 +38,7 @@ public class MyCard {
 		this.width = width;
 	}
 
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
@@ -44,12 +46,9 @@ public class MyCard {
 		this.height = height;
 	}
 
-	// [인터페이스] 꽂아넣기 위한 setters 메서드
+	// [인터페이스] 꽂아넣기 위한 setter
 	public void setMyCardListener(MyCardListener myCardListener) {
 		this.myCardListener = myCardListener;
 	}
-	
-	
-	
 	
 }

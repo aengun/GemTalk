@@ -4,10 +4,10 @@ import java.awt.Graphics;
 
 public class MyCard {
 
-	private int width;
-	private int height;
 	private int x; // 나의 카드 목록 좌표 x
 	private int y; // 나의 카드 목록 좌표 y
+	private int width = 30;
+	private int height = 30;
 	
 	private MyCardListener myCardListener;
 	

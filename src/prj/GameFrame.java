@@ -16,9 +16,9 @@ public class GameFrame extends Frame {
 		
 		ruleCanvas = new RuleCanvas();
 		gameCanvas = new GameCanvas();
-		add(ruleCanvas);
+		add(gameCanvas);
 		
-		setSize(870, 500);
+		setSize(1200, 700);
 		setVisible(true);
 		
 	}

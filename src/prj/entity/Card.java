@@ -5,7 +5,7 @@ public abstract class Card {
 	private int width;
 	private int height;
 	
-	private int count;
+	private int count; // 재희가 구현
 
 	public Card() {
 	}

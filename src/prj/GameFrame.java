@@ -2,6 +2,13 @@ package prj;
 
 import java.awt.Canvas;
 import java.awt.Frame;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import prj.canvas.GameCanvas;
 import prj.canvas.IntroCanvas;
@@ -22,6 +29,20 @@ public class GameFrame extends Frame {
 		add(introCanvas);
 		setSize(1200, 700);
 		setVisible(true);
+
+		File bgm = new File("res/bgm.wav");
+
+		try {
+
+			AudioInputStream stream = AudioSystem.getAudioInputStream(bgm);
+			Clip clip = AudioSystem.getClip();
+			clip.open(stream);
+			clip.start();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 
 	}
 

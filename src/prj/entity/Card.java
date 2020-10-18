@@ -11,6 +11,9 @@ public abstract class Card {
 	private int y;
 	private int dx;
 	private int dy;
+	
+//	private int color;
+	private int order;//10개의 질문을 구분하는 변수
 
 	// 카드 사이즈
 	public static int width;     
@@ -21,26 +24,48 @@ public abstract class Card {
 	private int count;
 
 	public Card() {
-		
+		this(0,0);
 	}
 
-//	public Card(int x, int y, String imgSrc) {
-//		super();
-//	}
-	
-//	public abstract void paint(Graphics g);
+	public Card(int x, int y) {
 
+		this.x=x;
+		this.y=y;
+		width = 154;
+		height = 218;
+				
+	}
+	
+	/*
+	order쓸 경우 생성자
+	
+	public Card(){
+		this(0);
+	}
+	
+	public Card(int order) {
+
+		this.order = order;
+		width = 154;
+		height = 218;
+				
+	}
+	*/
+	
+//	public abstract void paint(Graphics g);	
+	
 	public void paint(Graphics g) {
 
 		// 그려낼 곳 좌표
-		int w = 154; // 카드 이미지 너비
-		int h = 218; // 카드 이미지 높이
+		int w = 154; // 카드 이미지 너비 ->이거는 생성자에
+		int h = 218; // 카드 이미지 높이 ->이거는 생성자에
 		int x1 = w;
 		int y1 = h;
 		int x2 = x1 + w;
 		int y2 = y1 + h;
 		int p = 200;
 		
+		//아래에 부분은 각 클래스마다 페인트하면 될거같아서 abstract가 맞을거예요
 		
 		img = Toolkit.getDefaultToolkit().getImage("res/cardDeck.png");
 
@@ -69,7 +94,7 @@ public abstract class Card {
 //		int x2 = x1 + w;
 //		int y2 = y1 + h;
 //
-//		// 카드 이미지 크기 범위 안에 있는가? -> (0,0) ~ (w,y) 안에 있어야 한다?
+//		// 카드 이미지 크기 범위 안에 있는가? -> (0,0) ~ (w,y) 안에 있어야 한다? :(x-w/2,y-h/2) ~ (x+w/2,y+h/2)에 속해야 한다(정중앙일 경우) (x,y) ~ (x+w,y+h)왼쪽 상단일경우		
 //		// Boy 때와는 다르게 커서 위치는 가운데에 위치한다.
 //
 //		// 클릭 가능한게 1(카드덱), 2(1번카드), 3(2번카드)가 있다.
@@ -115,6 +140,14 @@ public abstract class Card {
 
 		// TrashCan 으로 간다. -> 보이지 않는 어딘가의 좌표
 
+	}
+
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
 	}
 
 }

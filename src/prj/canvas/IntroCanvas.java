@@ -66,7 +66,7 @@ public class IntroCanvas extends Canvas {
 					}
 
 				} else if (button3.isSelected(x, y)) { // EXIT 할 때 구현 필요
-
+					System.exit(0);
 				}
 
 			}

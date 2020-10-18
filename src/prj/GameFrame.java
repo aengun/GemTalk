@@ -16,10 +16,10 @@ public class GameFrame extends Frame {
 	public GameFrame() {
 		instance = this;
 
-		introCanvas = new IntroCanvas();
+//		introCanvas = new IntroCanvas();
 //		ruleCanvas = new RuleCanvas();
-//		gameCanvas = new GameCanvas();
-		add(introCanvas);
+		gameCanvas = new GameCanvas();
+		add(gameCanvas);
 		setSize(1200, 700);
 		setVisible(true);
 

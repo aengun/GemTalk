@@ -11,22 +11,23 @@ import prj.entity.Player;
 
 public class PlayerBoard {
 
-	private int x; // 플레이어 	보드 좌표 x
+	private int x; // 플레이어 	보드 좌표 x(직접 쓰이진 않음)
 	private int y; // 플레이어 보드 좌표 y
-	private int width;
-	private int height;
+	private int width = 500; // (직접 쓰이진 않음)
+	private int height = 500;
 	
 	private Player player; 
 
 	public PlayerBoard() {
-		this(100, 100, 100, 100);
+		this(100, 100, 100, 100, 100, 100, 100, 100, 1);
 	}
 	
-	public PlayerBoard(int x, int y, int playerX, int playerY) {
+	public PlayerBoard(int x, int y, int playerX, int playerY, int missionCardX, int missionCardY,
+			int myCardX, int myCardY, int imgNum) {
 		this.x = x;
 		this.y = y;
 		
-		player = new Player(playerX, playerY);
+		player = new Player(playerX, playerY, missionCardX, missionCardY, myCardX, myCardY, imgNum);
 	}
 
 	// GameCanvas의 paint 메서드로부터 g를 넘겨받음

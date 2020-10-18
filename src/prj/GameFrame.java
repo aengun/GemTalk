@@ -17,8 +17,8 @@ public class GameFrame extends Frame {
 		instance = this;
 
 		introCanvas = new IntroCanvas();
-//		ruleCanvas = new RuleCanvas();
-//		gameCanvas = new GameCanvas();
+		ruleCanvas = new RuleCanvas();
+		gameCanvas = new GameCanvas();
 		add(introCanvas);
 		setSize(1200, 700);
 		setVisible(true);
@@ -31,15 +31,17 @@ public class GameFrame extends Frame {
 		remove(oldCanvas);
 
 		add((Canvas) newCanvas.newInstance());
+		revalidate();
 
 	}
 
 	public void switchCanvas(IntroCanvas oldCanvas, Class newCanvas)
 			throws InstantiationException, IllegalAccessException {
-		
+
 		remove(oldCanvas);
 
 		add((Canvas) newCanvas.newInstance());
-//		revalidate();
+		revalidate();
 	}
+
 }

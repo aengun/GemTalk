@@ -23,9 +23,9 @@ public class IntroCanvas extends Canvas {
 	public IntroCanvas() {
 		instance = this;
 
-		button1 = new IntroButton(1000, 350, 120, 70, "Strat"); // 조정 필요
-		button2 = new IntroButton(1000, 450, 120, 70, "Rule"); // 조정 필요
-		button3 = new IntroButton(1000, 550, 120, 70, "Exit"); // 조정 필요
+		button1 = new IntroButton(950, 400, 150, 80, 1); // 1 : start
+		button2 = new IntroButton(950, 480, 150, 80, 2); // 2 : rule
+		button3 = new IntroButton(950, 560, 150, 80, 3); // 3 : exit
 
 		buttons = new IntroButton[3];
 		buttons[0] = button1;
@@ -41,15 +41,34 @@ public class IntroCanvas extends Canvas {
 				int x = e.getX();
 				int y = e.getY();
 
-				try {
-					prj.GameFrame.instance.switchCanvas(IntroCanvas.this, GameCanvas.class);
-				} catch (InstantiationException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IllegalAccessException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if (button1.isSelected(x, y)) { // START
+					try {
+						System.out.println("gamecanvas");
+						GameFrame.instance.switchCanvas(IntroCanvas.this, GameCanvas.class);
+					} catch (InstantiationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IllegalAccessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else if (button2.isSelected(x, y)) { // HELP
+
+					try {
+						System.out.println("rulecanvas");
+						GameFrame.instance.switchCanvas(IntroCanvas.this, RuleCanvas.class);
+					} catch (InstantiationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IllegalAccessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+				} else if (button3.isSelected(x, y)) { // EXIT 할 때 구현 필요
+
 				}
+
 			}
 		});
 

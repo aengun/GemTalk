@@ -21,34 +21,35 @@ public class IntroBackground {
 
 	static {
 		try {
-			img = ImageIO.read(new File("res/introBackgroundTest.png"));
+			img = ImageIO.read(new File("res/introBackground.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public IntroBackground() {
-		this(0, 0, "res/introBackgroundTest.png"); // 경로 아무렇게나 넣음
-	}
+// 이부분 없어도 되지 않나?
+//	public IntroBackground() {
+//		this(0, 0, "res/introBackgroundTest.png"); // 경로 아무렇게나 넣음
+//	}
 
-	public IntroBackground(double x, double y, String imgSrc) {
-
-		Image img = getImage();
-		this.x = x;
-		this.y = y;
-
-	}
+//	public IntroBackground(double x, double y, String imgSrc) {
+//
+//		Image img = getImage();
+//		this.x = x;
+//		this.y = y;
+//
+//	}
 
 	public void paint(Graphics g) {
 
 		img = getImage();
-		int w = img.getWidth(IntroCanvas.instance);
-		System.out.println(w);
-		int h = img.getHeight(IntroCanvas.instance);
-		System.out.println(h);
+		width = img.getWidth(IntroCanvas.instance); // 배경화면 그림 파일 사이즈
+		height = img.getHeight(IntroCanvas.instance);
+		int cw = IntroCanvas.instance.getWidth(); // 캔버스 사이즈
+		int ch = IntroCanvas.instance.getHeight();
 
-		g.drawImage(img, (int) 0, (int) 0, IntroCanvas.instance);
+		g.drawImage(img, 0, 0, cw, ch, 0, 0, width, height, IntroCanvas.instance);
 
 	}
 

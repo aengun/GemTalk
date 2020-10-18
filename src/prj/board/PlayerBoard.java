@@ -19,15 +19,20 @@ public class PlayerBoard {
 	private Player player; 
 
 	public PlayerBoard() {
-		this(100, 100, 100, 100, 100, 100, 100, 100, 1);
+		this(0, 0, 0, 0, 0, 0, 
+				0, 0, 0, 0, 0, 0, 
+				0, 0, 0, 0, 0, 0, 1);
 	}
 	
 	public PlayerBoard(int x, int y, int playerX, int playerY, int missionCardX, int missionCardY,
-			int myCardX, int myCardY, int imgNum) {
+			int myCardX, int myCardY, int redGemX, int redGemY, int orangeGemX, int orangeGemY,
+			int greenGemX, int greenGemY, int blueGemX, int blueGemY, int chanceGemX, int chanceGemY, int imgNum) {
 		this.x = x;
 		this.y = y;
 		
-		player = new Player(playerX, playerY, missionCardX, missionCardY, myCardX, myCardY, imgNum);
+		player = new Player(playerX, playerY, missionCardX, missionCardY, 
+				myCardX, myCardY, redGemX, redGemY, orangeGemX, orangeGemY, 
+				greenGemX, greenGemY, blueGemX, blueGemY, chanceGemX, chanceGemY, imgNum);
 	}
 
 	// GameCanvas의 paint 메서드로부터 g를 넘겨받음

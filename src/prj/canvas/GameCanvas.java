@@ -5,63 +5,72 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
 
+import prj.board.GameBoard;
 import prj.board.PlayerBoard;
-import prj.entity.ActionCard;
-import prj.entity.BlueCard;
-import prj.entity.Card;
-import prj.entity.ChanceCard;
 import prj.entity.GameBackground;
-import prj.entity.GreenCard;
 import prj.entity.MyCard;
-import prj.entity.OrangeCard;
-import prj.entity.RedCard;
 
 public class GameCanvas extends Canvas {
 
 	public static Canvas instance;
 	
-	private MyCard myCard;
-	private Card[] cardDeck;
-	
 	private GameBackground gameBackground;
 	
+	private MyCard myCard; // 인터페이스 때문에 정의
+	private GameBoard gameBoard;
 	private PlayerBoard[] playerBoards = new PlayerBoard[4]; // 플레이어 보드 4개 생성
-	
 	private Random rand;
 	
 	public GameCanvas() {
 		instance = this;
 		gameBackground = new GameBackground();
 		
-		// 1,2번째 인자: PlayerBoard x,y 좌표
-		// 3,4번째 인자: Player x,y 좌표
-		// 5,6번째 인자: MissionCard x,y 좌표
-		// 7,8번째 인자: MyCard x,y 좌표
-		playerBoards[0] = new PlayerBoard(250, 125, 300, 0, 200, 0, 0, 0, 1); 
-		playerBoards[1] = new PlayerBoard(950, 125, 700, 0, 900, 0, 1000, 0, 2);
-		playerBoards[2] = new PlayerBoard(250, 575, 300, 450, 200, 450, 0, 450, 3);
-		playerBoards[3] = new PlayerBoard(950, 575, 700, 450, 900, 450, 1000, 450, 4);
+		playerBoards[0] = new PlayerBoard(
+				250, 125, 	// PlayerBoard
+				350, 45,  	// Player
+				230, 20,  	// MissionCard
+				20, 20,   	// MyCard
+				242, 80,		// redGem
+				242, 115, 		// orangeGem
+				242, 150, 		// greenGem
+				242, 185, 		// blueGem
+				0, 0, 		// chanceGem
+				1); 		// 플레이어 순번
+		playerBoards[1] = new PlayerBoard(
+				950, 125, 
+				670, 40, 
+				850, 20, 
+				980, 20, 
+				862, 80, 
+				862, 115, 
+				862, 150, 
+				862, 185, 
+				0, 0, 
+				2);
+		playerBoards[2] = new PlayerBoard(
+				250, 575, 
+				350, 460, 
+				230, 450, 
+				20, 450, 
+				242, 510, 
+				242, 545, 
+				242, 580, 
+				242, 615, 
+				500, 500, 
+				3);
+		playerBoards[3] = new PlayerBoard(
+				950, 575, 
+				670, 470, 
+				850, 450, 
+				980, 450,
+				862, 510,
+				862, 545,
+				862, 580,
+				862, 615, 
+				0, 0,
+				4);
 		
 		rand = new Random();
-		
-		cardDeck = new Card[50];
-		for(int i=0;i<50;i++) {
-			if(i<10)
-				cardDeck[i] = new RedCard(i%10);//0-9 
-			else if(i<20)
-				cardDeck[i] = new GreenCard(i%10);
-			else if(i<30)
-				cardDeck[i] = new OrangeCard(i%10);
-			else if(i<40)
-				cardDeck[i] = new BlueCard(i%10);
-			else if(i<45)
-				cardDeck[i] = new ActionCard();
-			else
-				cardDeck[i] = new ChanceCard();
-			
-		}
-		
-		shuffle();
 		
 		// 우승할 때 인터페이스 꽂는 부분
 //		myCard.setMyCardListener(new MyCardListener() {
@@ -92,14 +101,5 @@ public class GameCanvas extends Canvas {
 		paint(g);
 	}
 	
-	public void shuffle() {
-		for(int i=0;i<100;i++) {
-			Card temp;
-			int a = rand.nextInt(50);
-			int b = rand.nextInt(50);
-			temp = cardDeck[a];
-			cardDeck[a] = cardDeck[b];
-			cardDeck[b] = temp;
-		}
-	}
+	
 }

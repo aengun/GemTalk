@@ -11,49 +11,47 @@ public abstract class Card {
 	private int y;
 	private int dx;
 	private int dy;
-	
+
 //	private int color;
-	private int order;//10개의 질문을 구분하는 변수
+	private int order;// 10개의 질문을 구분하는 변수
 
 	// 카드 사이즈
-	public static int width;     
+	public static int width;
 	public static int height;
 	public static Image img;
+	public Image[] imgs;
 	public static String imgSrc;
 
 	private int count;
 
 	public Card() {
-		this(0,0);
+		this(0, 0);
 	}
 
 	public Card(int x, int y) {
 
-		this.x=x;
-		this.y=y;
+		this.x = x;
+		this.y = y;
 		width = 154;
 		height = 218;
-				
-	}
-	
-	/*
-	order쓸 경우 생성자
-	
-	public Card(){
-		this(0);
-	}
-	
-	public Card(int order) {
 
-		this.order = order;
-		width = 154;
-		height = 218;
-				
+		imgs = new Image[10];
 	}
-	*/
-	
+
+	/*
+	 * order쓸 경우 생성자
+	 * 
+	 * public Card(){ this(0); }
+	 * 
+	 * public Card(int order) {
+	 * 
+	 * this.order = order; width = 154; height = 218;
+	 * 
+	 * }
+	 */
+
 //	public abstract void paint(Graphics g);	
-	
+
 	public void paint(Graphics g) {
 
 		// 그려낼 곳 좌표
@@ -64,15 +62,15 @@ public abstract class Card {
 		int x2 = x1 + w;
 		int y2 = y1 + h;
 		int p = 200;
-		
-		//아래에 부분은 각 클래스마다 페인트하면 될거같아서 abstract가 맞을거예요
-		
+
+		// 아래에 부분은 각 클래스마다 페인트하면 될거같아서 abstract가 맞을거예요
+
 		img = Toolkit.getDefaultToolkit().getImage("res/cardDeck.png");
 
 //		g.drawImage(img, 100, 80, 100, 200, this);  // g.drawImage(이미지, x좌표, y좌표, 높이, 너비, this)
 //		g.drawImage(img, 100, 300, 100 + 154, 518, 0, 0, w, h, this);  //g.drawImage(이미지, x1좌표, y1좌표, x2좌표, y2좌표, w, h, this)
 //		g.drawImage(img, x1, y1, x2, y2, 0, 0, w, h, this);
-		
+
 		img = Toolkit.getDefaultToolkit().getImage("res/questionCard.png");
 //		g.drawImage(img, 300, 80, 100, 200, this);
 //		g.drawImage(img, 400, 300, 400 + 154, 518, 0, 0, w, h, this);
@@ -149,5 +147,7 @@ public abstract class Card {
 	public void setOrder(int order) {
 		this.order = order;
 	}
+	
+	
 
 }

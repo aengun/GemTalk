@@ -9,35 +9,58 @@ import prj.canvas.GameCanvas;
 
 public class MissionCard {
 
-	private int width = 100;  
-	private int height = 200;
+	private int cardWidth = 102;  	// 보석 뒤 배경
+	private int cardHeight = 200;
+	private int gemWidth = 25;		// 보석
+	private int gemHeight = 25;
+	
 	private int x; // 미션 카드 좌표 x
 	private int y; // 미션 카드 좌표 y
 	
+	private int redGemX;
+	private int redGemY;
+	private int orangeGemX;
+	private int orangeGemY;
+	private int greenGemX;
+	private int greenGemY;
+	private int blueGemX;
+	private int blueGemY;
+	
+	private Image missionCardImg;
 	private Image redGemImg;
 	private Image orangeGemImg;
 	private Image greenGemImg;
 	private Image blueGemImg;
-	private Image missionCardImg;
 	
 	private int max = 6;
 	private Card[] cards = new Card[4];
 	private Random rand = new Random(); 
 	
 	public MissionCard() {
-		this(0, 0);
+		this(0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0);
 	}
 	
-	public MissionCard(int x, int y) {
+	public MissionCard(int x, int y, int redGemX, int redGemY, int orangeGemX, int orangeGemY, 
+			int greenGemX, int greenGemY, int blueGemX, int blueGemY) {
 		this.x = x;
 		this.y = y;
+		this.redGemX = redGemX;
+		this.redGemY = redGemY;
+		this.orangeGemX = orangeGemX;
+		this.orangeGemY = orangeGemY;
+		this.greenGemX = greenGemX;
+		this.greenGemY = greenGemY;
+		this.blueGemX = blueGemX;
+		this.blueGemY = blueGemY;
 		
 		Toolkit tk = Toolkit.getDefaultToolkit(); 
-		redGemImg = tk.getImage("res/redGem.png");
-		orangeGemImg = tk.getImage("res/orangeGem.png");
-		greenGemImg = tk.getImage("res/greenGem.png");
-		blueGemImg = tk.getImage("res/blueGem.png");
-		missionCardImg = tk.getImage("res/missionCard.png");
+		this.missionCardImg = tk.getImage("res/missionCard.png");
+		this.redGemImg = tk.getImage("res/redGem.png");
+		this.orangeGemImg = tk.getImage("res/orangeGem.png");
+		this.greenGemImg = tk.getImage("res/greenGem.png");
+		this.blueGemImg = tk.getImage("res/blueGem.png");
+		
 		
 		cards[0] = new RedCard();
 		cards[1] = new OrangeCard();
@@ -66,34 +89,41 @@ public class MissionCard {
 	}
 	
 	public void paint(Graphics g) {
-		int gemW = redGemImg.getWidth(null);  // 어차피 gem들의 이미지크기는 같으므로 redGemImg를 대표로.
-		int gemH = redGemImg.getHeight(null);
 		int mCardW = missionCardImg.getWidth(null);
 		int mCardH = missionCardImg.getHeight(null);
-		int x1 = x;
-		int y1 = y;
-		int x2 = x1 + width;
-		int y2 = y1 + height;
+		int gemW = redGemImg.getWidth(null);  // 어차피 gem들의 이미지크기는 같으므로 redGemImg를 대표로.
+		int gemH = redGemImg.getHeight(null);
+		
+		int x1 = x + cardWidth;
+		int y1 = y + cardHeight;
+		int redGemX1 = redGemX + gemWidth;
+		int redGemY1 = redGemY + gemHeight;
+		int orangeGemX1 = orangeGemX + gemWidth;
+		int orangeGemY1 = orangeGemY + gemHeight;
+		int greenGemX1 = greenGemX + gemWidth;
+		int greenGemY1 = greenGemY + gemHeight;
+		int blueGemX1 = blueGemX + gemWidth;
+		int blueGemY1 = blueGemY + gemHeight;
 		
 		g.drawImage(missionCardImg, 
-				x1, y1, x2, y2, 
+				x, y, x1, y1, 
 				0, 0, mCardW, mCardH, GameCanvas.instance);
 		
-//		g.drawImage(redGemImg, 
-//				500, 500, 550, 550, 
-//				0, 0, gemW, gemH, GameCanvas.instance);
-//		
-//		g.drawImage(orangeGemImg, 
-//				550, 550, 600, 600, 
-//				0, 0, gemW, gemH, GameCanvas.instance);
-//		
-//		g.drawImage(greenGemImg, 
-//				600, 600, 650, 650, 
-//				0, 0, gemW, gemH, GameCanvas.instance);
-//		
-//		g.drawImage(blueGemImg, 
-//				650, 650, 700, 700, 
-//				0, 0, gemW, gemH, GameCanvas.instance);
+		g.drawImage(redGemImg, 
+				redGemX, redGemY, redGemX1, redGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(orangeGemImg, 
+				orangeGemX, orangeGemY, orangeGemX1, orangeGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(greenGemImg, 
+				greenGemX, greenGemY, greenGemX1, greenGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(blueGemImg, 
+				blueGemX, blueGemY, blueGemX1, blueGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
 	}
 	
 	public void update() {

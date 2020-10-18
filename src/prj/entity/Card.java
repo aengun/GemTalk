@@ -19,6 +19,7 @@ public abstract class Card {
 	public static int width;
 	public static int height;
 	public static Image img;
+	public Image[] imgs;
 	public static String imgSrc;
 
 	 // 카드 갯수 카운트?
@@ -27,7 +28,6 @@ public abstract class Card {
 	// 인자가 없는 생성자
 	public Card() {
 		this(0, 0, 0, 0, null);
-
 	}
 	
 	// 인자가 있는 생성자
@@ -46,6 +46,14 @@ public abstract class Card {
 
 	protected abstract Image getImage(); // 자식만 구현하기 위해서 protected?
 
+		this.x = x;
+		this.y = y;
+		width = 154;
+		height = 218;
+
+		imgs = new Image[10];
+	}
+
 	/*
 	 * order쓸 경우 생성자
 	 * 
@@ -58,6 +66,9 @@ public abstract class Card {
 	 * }
 	 */
 
+
+
+//	public abstract void paint(Graphics g);	
 
 	public void paint(Graphics g) {
 
@@ -77,6 +88,7 @@ public abstract class Card {
 //		g.drawImage(img, 100, 80, 100, 200, this);  // g.drawImage(이미지, x좌표, y좌표, 높이, 너비, this)
 //		g.drawImage(img, 100, 300, 100 + 154, 518, 0, 0, w, h, this);  //g.drawImage(이미지, x1좌표, y1좌표, x2좌표, y2좌표, w, h, this)
 //		g.drawImage(img, x1, y1, x2, y2, 0, 0, width, height, this);
+//		g.drawImage(img, x1, y1, x2, y2, 0, 0, w, h, this);
 
 		img = Toolkit.getDefaultToolkit().getImage("res/questionCard.png");
 //		g.drawImage(img, 300, 80, 100, 200, this);
@@ -157,5 +169,7 @@ public abstract class Card {
 	public void setOrder(int order) {
 		this.order = order;
 	}
+	
+	
 
 }

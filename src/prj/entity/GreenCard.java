@@ -7,6 +7,7 @@ public class GreenCard extends QuestionCard {
 	
 	private Image[] imgs;
 //	private int order;//10개의 질문을 구분하는 변수
+	//private static Image img;
 	
 //	int[] redCard = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };//10개 질문카드
 //	int[] redCard = new int[10];

@@ -14,27 +14,32 @@ public class Player {
 
 	private int x; // 플레이어 캐릭터 좌표 x
 	private int y; // 플레이어 캐릭터 좌표 y
-	private int width = 200;
-	private int height = 200;
+	private int width = 150;
+	private int height = 150;
 	private Image img;
 	
 	private MissionCard missionCard;
 	private MyCard myCard;
 	
 	public Player() {
-		this(100, 100, 100, 100, 100, 100, 1);
+		this(0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 
+				0, 0, 0, 0, 1);
 	}
 	
-	public Player(int x, int y, int missionCardX, int missionCardY, 
-			int myCardX, int myCardY, int imgNum) {
+	public Player(int x, int y, int missionCardX, int missionCardY, int myCardX, int myCardY, 
+			int redGemX, int redGemY, int orangeGemX, int orangeGemY, int greenGemX, int greenGemY, 
+			int blueGemX, int blueGemY, int chanceGemX, int chanceGemY, int imgNum) {
 		this.x = x;
 		this.y = y;
 		
 		Toolkit tk = Toolkit.getDefaultToolkit(); 
 		img = tk.getImage("res/player" + imgNum + ".png");
 		
-		missionCard = new MissionCard(missionCardX, missionCardY);
-		myCard = new MyCard(myCardX, myCardY);
+		missionCard = new MissionCard(missionCardX, missionCardY, redGemX, redGemY, orangeGemX, orangeGemY,
+				greenGemX, greenGemY, blueGemX, blueGemY);
+		myCard = new MyCard(myCardX, myCardY, redGemX, redGemY, orangeGemX, orangeGemY,
+				greenGemX, greenGemY, blueGemX, blueGemY, chanceGemX, chanceGemY, imgNum);
 	}
 	
 	public void choice(int x, int y) {

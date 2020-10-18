@@ -3,7 +3,7 @@ package prj.entity;
 import java.awt.Image;
 
 public class ActionCard extends Card {
-	
+
 	private Image[] imgs;
 //	private int order;//10개의 질문을 구분하는 변수
 	

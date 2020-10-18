@@ -12,7 +12,7 @@ public class RuleButton {
 	private String text;
 	
 	public RuleButton() {
-		this(700,0,100,50, "µÚ·Î °¡±â");
+		this(1000,0,100,50, "ë’¤ë¡œ ê°€ê¸°");
 	}
 
 	public RuleButton(double x, double y, double width, double height, String text) {
@@ -33,16 +33,16 @@ public class RuleButton {
 		g.setColor(Color.BLACK);
 		g.drawString(text,(int)(x+20), (int)(y+height/2));
 		
-		System.out.println("wi: "+width);
-		System.out.println("hi: "+height);
-		System.out.println("x: "+x);
-		System.out.println("y: "+y);
+//		System.out.println("wi: "+width);
+//		System.out.println("hi: "+height);
+//		System.out.println("x: "+x);
+//		System.out.println("y: "+y);
 		
 	}
 	
 	public boolean click(int x2, int y2) {
-		System.out.println("x2: "+x2);
-		System.out.println("y2: "+y2);
+//		System.out.println("x2: "+x2);
+//		System.out.println("y2: "+y2);
 		if((x<=x2 && x2<=x+width) && (y<=y2 && y2<=y+height))
 			return true;
 		

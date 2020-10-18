@@ -52,7 +52,6 @@ public class RuleButton {
 		System.out.println(iw);
 
 		g.drawImage(img, x, y, x + w, y + h, 0, 0, iw, ih, RuleCanvas.instance);
-
 	}
 
 	public boolean click(int x2, int y2) {

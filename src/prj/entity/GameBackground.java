@@ -18,10 +18,9 @@ public class GameBackground {
 	private int width;
 	private int height;
 	
-	// 딱 한 번의 이미지를 생성하기 위함
+	// 배경화면만 static 활용(player, card는 toolkit 사용)
 	private static Image img; 
 	
-	// new와 상관없이 프로그램이 로드되면 제일 먼저 실행되는 블록인 전역변수 생성자를 사용하자.
 	static {
 		try {
 			img = ImageIO.read(new File("res/gameBackground.jpg"));

@@ -2,6 +2,7 @@ package prj.entity;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,32 +14,27 @@ public class Player {
 
 	private int x; // 플레이어 캐릭터 좌표 x
 	private int y; // 플레이어 캐릭터 좌표 y
-	private int width = 150;
-	private int height = 150;
-	
-	private static Image img;
+	private int width = 200;
+	private int height = 200;
+	private Image img;
 	
 	private MissionCard missionCard;
 	private MyCard myCard;
 	
-	static {
-		try {
-			img = ImageIO.read(new File("res/player1.png")); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public Player() {
-		this(100, 100);
+		this(100, 100, 100, 100, 100, 100, 1);
 	}
 	
-	public Player(int x, int y) {
+	public Player(int x, int y, int missionCardX, int missionCardY, 
+			int myCardX, int myCardY, int imgNum) {
 		this.x = x;
 		this.y = y;
 		
-		missionCard = new MissionCard();
-		myCard = new MyCard();
+		Toolkit tk = Toolkit.getDefaultToolkit(); 
+		img = tk.getImage("res/player" + imgNum + ".png");
+		
+		missionCard = new MissionCard(missionCardX, missionCardY);
+		myCard = new MyCard(myCardX, myCardY);
 	}
 	
 	public void choice(int x, int y) {
@@ -50,10 +46,13 @@ public class Player {
 	}
 	
 	public void paint(Graphics g) {
+		missionCard.paint(g);
+		myCard.paint(g);
+		
 		int w = img.getWidth(null); 
 		int h = img.getHeight(null);
-		int x1 = x - width / 2; // 수정하자
-		int y1 = y - height / 2;
+		int x1 = x; 
+		int y1 = y;
 		int x2 = x1 + width;
 		int y2 = y1 + height;
 		

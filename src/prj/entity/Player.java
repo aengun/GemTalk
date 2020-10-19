@@ -48,20 +48,6 @@ public class Player {
 		img = tk.getImage("res/player" + imgNum + ".png");
 		
 	}
-//	public Player(int x, int y, int missionCardX, int missionCardY, int myCardX, int myCardY, 
-//			int redGemX, int redGemY, int orangeGemX, int orangeGemY, int greenGemX, int greenGemY, 
-//			int blueGemX, int blueGemY, int chanceGemX, int chanceGemY, int imgNum) {
-//		this.x = x;
-//		this.y = y;
-//		
-//		Toolkit tk = Toolkit.getDefaultToolkit(); 
-//		img = tk.getImage("res/player" + imgNum + ".png");
-//		
-//		missionCard = new MissionCard(missionCardX, missionCardY, redGemX, redGemY, orangeGemX, orangeGemY,
-//				greenGemX, greenGemY, blueGemX, blueGemY);
-//		myCard = new MyCard(myCardX, myCardY, redGemX, redGemY, orangeGemX, orangeGemY,
-//				greenGemX, greenGemY, blueGemX, blueGemY, chanceGemX, chanceGemY, imgNum);
-//	}
 	
 	public void choice(int x, int y) {
 		

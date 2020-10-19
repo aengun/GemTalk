@@ -93,6 +93,8 @@ public class MissionCard {
 		for (int i = 0; i < 4; i++) {
 			if (max != 0) {
 				int tempCount = rand.nextInt(max) + 1; // 1 ~ 6
+				if(tempCount>3)
+					tempCount = 3;
 				cards[i].setCount(tempCount);
 				max -= tempCount;
 			} else

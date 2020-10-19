@@ -66,47 +66,14 @@ public class MyCard {
 	}
 	
 	public void paint(Graphics g) {
-		int mCardW = myCardImg.getWidth(null);
-		int mCardH = myCardImg.getHeight(null);
-		int gemW = redGemImg.getWidth(null);  // 어차피 gem들의 이미지크기는 같으므로 redGemImg를 대표로.
-		int gemH = redGemImg.getHeight(null);
 		
-		int x1 = x + cardWidth;
-		int y1 = y + cardHeight;
-		int redGemX1 = redGemX + gemWidth;
-		int redGemY1 = redGemY + gemHeight;
-		int orangeGemX1 = orangeGemX + gemWidth;
-		int orangeGemY1 = orangeGemY + gemHeight;
-		int greenGemX1 = greenGemX + gemWidth;
-		int greenGemY1 = greenGemY + gemHeight;
-		int blueGemX1 = blueGemX + gemWidth;
-		int blueGemY1 = blueGemY + gemHeight;
-		int chanceGemX1 = chanceGemX + gemWidth;
-		int chanceGemY1 = chanceGemY + gemHeight;
+		g.drawImage(myCardImg, x, y, GameCanvas.instance);
+		g.drawImage(redGemImg, redGemX, redGemY, gemWidth, gemHeight, GameCanvas.instance);
+		g.drawImage(orangeGemImg, orangeGemX, orangeGemY, gemWidth, gemHeight,GameCanvas.instance);
+		g.drawImage(greenGemImg, greenGemX, greenGemY,gemWidth, gemHeight, GameCanvas.instance);
+		g.drawImage(blueGemImg, blueGemX, blueGemY,gemWidth, gemHeight, GameCanvas.instance);
+		g.drawImage(chanceGemImg, chanceGemX, chanceGemY,gemWidth, gemHeight, GameCanvas.instance);		
 		
-		g.drawImage(myCardImg, 
-				x, y, x1, y1, 
-				0, 0, mCardW, mCardH, GameCanvas.instance);
-		
-		g.drawImage(redGemImg, 
-				redGemX, redGemY, redGemX1, redGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(orangeGemImg, 
-				orangeGemX, orangeGemY, orangeGemX1, orangeGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(greenGemImg, 
-				greenGemX, greenGemY, greenGemX1, greenGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(blueGemImg, 
-				blueGemX, blueGemY, blueGemX1, blueGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(chanceGemImg, 
-				chanceGemX, chanceGemY, chanceGemX1, chanceGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
 	}
 	
 	// MyCard의 보석 개수를 업데이트하는 메서드가 필요할 것 같아서 추가

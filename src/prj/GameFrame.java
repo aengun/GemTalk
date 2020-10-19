@@ -2,13 +2,14 @@ package prj;
 
 import java.awt.Canvas;
 import java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JOptionPane;
 
 import prj.canvas.GameCanvas;
 import prj.canvas.IntroCanvas;
@@ -43,6 +44,19 @@ public class GameFrame extends Frame {
 
 			e.printStackTrace();
 		}
+
+		addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				int input = JOptionPane.showConfirmDialog(GameFrame.this, "게임을 종료하시겠습니까?", "게임 종료",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				if (input == JOptionPane.OK_OPTION)
+					System.exit(0);
+			}
+
+		});
 
 	}
 

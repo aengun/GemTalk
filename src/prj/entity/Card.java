@@ -45,14 +45,14 @@ public abstract class Card {
 	}
 
 	protected abstract Image getImage(); // 자식만 구현하기 위해서 protected?
-
-		this.x = x;
-		this.y = y;
-		width = 154;
-		height = 218;
-
-		imgs = new Image[10];
-	}
+//
+//		this.x = x;
+//		this.y = y;
+//		width = 154;
+//		height = 218;
+//
+//		imgs = new Image[10];
+//	}
 
 	/*
 	 * order쓸 경우 생성자

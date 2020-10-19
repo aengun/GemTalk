@@ -22,25 +22,46 @@ public class Player {
 	private MyCard myCard;
 	
 	public Player() {
-		this(0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 
-				0, 0, 0, 0, 1);
+		this(0, 0, 1);
 	}
 	
-	public Player(int x, int y, int missionCardX, int missionCardY, int myCardX, int myCardY, 
-			int redGemX, int redGemY, int orangeGemX, int orangeGemY, int greenGemX, int greenGemY, 
-			int blueGemX, int blueGemY, int chanceGemX, int chanceGemY, int imgNum) {
-		this.x = x;
-		this.y = y;
-		
+	public Player(int pbX, int pbY, int imgNum) {
+		switch(imgNum) {
+		case 1:
+		case 3:
+			x = pbX + 350;
+			y = pbY + 45;
+			
+			missionCard = new MissionCard(x-120, y-25);
+			myCard = new MyCard(x-340, y-25);
+			break;
+		case 2:
+		case 4:
+			x = pbX + 20;
+			y = pbY + 45;
+			
+			missionCard = new MissionCard(x+width+30, y-25);
+			myCard = new MyCard(x+width+162, y-25);
+			break;
+		}
 		Toolkit tk = Toolkit.getDefaultToolkit(); 
 		img = tk.getImage("res/player" + imgNum + ".png");
 		
-		missionCard = new MissionCard(missionCardX, missionCardY, redGemX, redGemY, orangeGemX, orangeGemY,
-				greenGemX, greenGemY, blueGemX, blueGemY);
-		myCard = new MyCard(myCardX, myCardY, redGemX, redGemY, orangeGemX, orangeGemY,
-				greenGemX, greenGemY, blueGemX, blueGemY, chanceGemX, chanceGemY, imgNum);
 	}
+//	public Player(int x, int y, int missionCardX, int missionCardY, int myCardX, int myCardY, 
+//			int redGemX, int redGemY, int orangeGemX, int orangeGemY, int greenGemX, int greenGemY, 
+//			int blueGemX, int blueGemY, int chanceGemX, int chanceGemY, int imgNum) {
+//		this.x = x;
+//		this.y = y;
+//		
+//		Toolkit tk = Toolkit.getDefaultToolkit(); 
+//		img = tk.getImage("res/player" + imgNum + ".png");
+//		
+//		missionCard = new MissionCard(missionCardX, missionCardY, redGemX, redGemY, orangeGemX, orangeGemY,
+//				greenGemX, greenGemY, blueGemX, blueGemY);
+//		myCard = new MyCard(myCardX, myCardY, redGemX, redGemY, orangeGemX, orangeGemY,
+//				greenGemX, greenGemY, blueGemX, blueGemY, chanceGemX, chanceGemY, imgNum);
+//	}
 	
 	public void choice(int x, int y) {
 		

@@ -28,7 +28,7 @@ public class GameFrame extends Frame {
 		ruleCanvas = new RuleCanvas();
 		gameCanvas = new GameCanvas();
 		add(introCanvas);
-		setSize(1200, 700);
+		setSize(1250, 730);
 		setVisible(true);
 
 		File bgm = new File("res/bgm.wav");

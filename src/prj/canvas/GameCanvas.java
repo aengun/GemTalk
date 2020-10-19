@@ -25,51 +25,21 @@ public class GameCanvas extends Canvas {
 		instance = this;
 		gameBackground = new GameBackground();
 		
-		playerBoards[0] = new PlayerBoard(
-				250, 125, 	// PlayerBoard
-				350, 45,  	// Player
-				230, 20,  	// MissionCard
-				20, 20,   	// MyCard
-				242, 80,		// redGem
-				242, 115, 		// orangeGem
-				242, 150, 		// greenGem
-				242, 185, 		// blueGem
-				0, 0, 		// chanceGem
-				1); 		// 플레이어 순번
-		playerBoards[1] = new PlayerBoard(
-				950, 125, 
-				670, 40, 
-				850, 20, 
-				980, 20, 
-				862, 80, 
-				862, 115, 
-				862, 150, 
-				862, 185, 
-				0, 0, 
-				2);
-		playerBoards[2] = new PlayerBoard(
-				250, 575, 
-				350, 460, 
-				230, 450, 
-				20, 450, 
-				242, 510, 
-				242, 545, 
-				242, 580, 
-				242, 615, 
-				500, 500, 
-				3);
-		playerBoards[3] = new PlayerBoard(
-				950, 575, 
-				670, 470, 
-				850, 450, 
-				980, 450,
-				862, 510,
-				862, 545,
-				862, 580,
-				862, 615, 
-				0, 0,
-				4);
-		
+		playerBoards[0] = new PlayerBoard(0, 0, 1);
+		playerBoards[1] = new PlayerBoard(700, 0, 2);
+		playerBoards[2] = new PlayerBoard(0, 450, 3);
+		playerBoards[3] = new PlayerBoard(700, 450, 4);
+//		playerBoards[0] = new PlayerBoard(
+//				250, 125, 	// PlayerBoard
+//				350, 45,  	// Player
+//				230, 20,  	// MissionCard 332 -350 18
+//				20, 20,   	// MyCard  205
+//				242, 80,		// redGem
+//				242, 115, 		// orangeGem
+//				242, 150, 		// greenGem
+//				242, 185, 		// blueGem
+//				0, 0, 		// chanceGem	
+//				1); 		// 플레이어 순번
 		rand = new Random();
 		
 		// 우승할 때 인터페이스 꽂는 부분
@@ -90,8 +60,6 @@ public class GameCanvas extends Canvas {
 		gameBackground.paint(bg);
 		for (int i = 0; i < 4; i++) 
 			playerBoards[i].paint(bg);
-		
-		//button.paint(bg);	
 		
 		g.drawImage(buf, 0, 0, this);
 	}

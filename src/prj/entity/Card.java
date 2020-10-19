@@ -45,7 +45,7 @@ public abstract class Card {
 	}
 
 	protected abstract Image getImage(); // 자식만 구현하기 위해서 protected?
-//
+
 //		this.x = x;
 //		this.y = y;
 //		width = 154;

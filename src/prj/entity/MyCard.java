@@ -27,7 +27,6 @@ public class MyCard {
 	private int blueGemY;
 	private int chanceGemX;
 	private int chanceGemY;
-	private int imgNum;
 	
 	private Image myCardImg;
 	private Image redGemImg;
@@ -39,28 +38,26 @@ public class MyCard {
 	private MyCardListener myCardListener;
 	
 	public MyCard() {
-		this(0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 1);
+		this(0, 0);
 	}
 	
-	public MyCard(int x, int y, int redGemX, int redGemY, int orangeGemX, int orangeGemY, 
-			int greenGemX, int greenGemY, int blueGemX, int blueGemY, int chanceGemX, int chanceGemY, int imgNum) {
+	public MyCard(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.redGemX = redGemX;
-		this.redGemY = redGemY;
-		this.orangeGemX = orangeGemX;
-		this.orangeGemY = orangeGemY;
-		this.greenGemX = greenGemX;
-		this.greenGemY = greenGemY;
-		this.blueGemX = blueGemX;
-		this.blueGemY = blueGemY;
-		this.chanceGemX = chanceGemX;
-		this.chanceGemY = chanceGemY;
-		this.imgNum = imgNum;
+		
+		this.redGemX = x+12;
+		this.redGemY = y+60;
+		this.orangeGemX = x+12;
+		this.orangeGemY = redGemY+35;
+		this.greenGemX = x+12;
+		this.greenGemY = orangeGemY+35;
+		this.blueGemX = x+12;
+		this.blueGemY = greenGemY+35;
+		this.chanceGemX = x + 95;
+		this.chanceGemY = (orangeGemY + greenGemY) / 2;
 		
 		Toolkit tk = Toolkit.getDefaultToolkit(); 
-		myCardImg = tk.getImage("res/myCard.png");
+		myCardImg = tk.getImage("res/myCard1.png");
 		redGemImg = tk.getImage("res/redGem.png");
 		orangeGemImg = tk.getImage("res/orangeGem.png");
 		greenGemImg = tk.getImage("res/greenGem.png");
@@ -87,56 +84,29 @@ public class MyCard {
 		int chanceGemX1 = chanceGemX + gemWidth;
 		int chanceGemY1 = chanceGemY + gemHeight;
 		
-		if (imgNum == 1 || imgNum == 3) {
-			g.drawImage(myCardImg, 
-					x, y, x1, y1, 
-					0, 0, mCardW, mCardH, GameCanvas.instance);
-			
-			g.drawImage(redGemImg, 
-					redGemX, redGemY, redGemX1, redGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(orangeGemImg, 
-					orangeGemX, orangeGemY, orangeGemX1, orangeGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(greenGemImg, 
-					greenGemX, greenGemY, greenGemX1, greenGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(blueGemImg, 
-					blueGemX, blueGemY, blueGemX1, blueGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(chanceGemImg, 
-					chanceGemX, chanceGemY, chanceGemX1, chanceGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-		} else if (imgNum == 2 || imgNum == 4) {
-			g.drawImage(myCardImg, 
-					x, y, x1, y1, 
-					0, 0, mCardW, mCardH, GameCanvas.instance);
-			
-			g.drawImage(redGemImg, 
-					redGemX, redGemY, redGemX1, redGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(orangeGemImg, 
-					orangeGemX, orangeGemY, orangeGemX1, orangeGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(greenGemImg, 
-					greenGemX, greenGemY, greenGemX1, greenGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(blueGemImg, 
-					blueGemX, blueGemY, blueGemX1, blueGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-			
-			g.drawImage(chanceGemImg, 
-					chanceGemX, chanceGemY, chanceGemX1, chanceGemY1, 
-					0, 0, gemW, gemH, GameCanvas.instance);
-		}
+		g.drawImage(myCardImg, 
+				x, y, x1, y1, 
+				0, 0, mCardW, mCardH, GameCanvas.instance);
 		
+		g.drawImage(redGemImg, 
+				redGemX, redGemY, redGemX1, redGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(orangeGemImg, 
+				orangeGemX, orangeGemY, orangeGemX1, orangeGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(greenGemImg, 
+				greenGemX, greenGemY, greenGemX1, greenGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(blueGemImg, 
+				blueGemX, blueGemY, blueGemX1, blueGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		g.drawImage(chanceGemImg, 
+				chanceGemX, chanceGemY, chanceGemX1, chanceGemY1, 
+				0, 0, gemW, gemH, GameCanvas.instance);
 	}
 	
 	// MyCard의 보석 개수를 업데이트하는 메서드가 필요할 것 같아서 추가

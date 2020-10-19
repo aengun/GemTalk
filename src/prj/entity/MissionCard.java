@@ -17,6 +17,9 @@ public class MissionCard {
 	private int x; // 미션 카드 좌표 x
 	private int y; // 미션 카드 좌표 y
 	
+	private int gemX;
+	private int gemY;
+	
 	private int redGemX;
 	private int redGemY;
 	private int orangeGemX;
@@ -31,9 +34,10 @@ public class MissionCard {
 	private Image orangeGemImg;
 	private Image greenGemImg;
 	private Image blueGemImg;
+	private CardStatus[] cardStatus;
 	
-	private int max = 6;
-	private Card[] cards = new Card[4];
+	private int max = 7;
+	private Card[] cards;
 	private Random rand = new Random(); 
 	
 	public MissionCard() {
@@ -44,27 +48,33 @@ public class MissionCard {
 		this.x = x;
 		this.y = y;
 		
-		Toolkit tk = Toolkit.getDefaultToolkit(); 
-		this.missionCardImg = tk.getImage("res/missionCard1.png");
-		this.redGemImg = tk.getImage("res/redGem.png");
-		this.orangeGemImg = tk.getImage("res/orangeGem.png");
-		this.greenGemImg = tk.getImage("res/greenGem.png");
-		this.blueGemImg = tk.getImage("res/blueGem.png");
+		gemX = x+12;
+		gemY = y+60;
 		
-		this.redGemX = x+12;
-		this.redGemY = y+60;
-		this.orangeGemX = x+12;
-		this.orangeGemY = redGemY+35;
-		this.greenGemX = x+12;
-		this.greenGemY = orangeGemY+35;
-		this.blueGemX = x+12;
-		this.blueGemY = greenGemY+35;
+		redGemX = gemX;
+		redGemY = gemY;
+		orangeGemX = gemX;
+		orangeGemY = redGemY+35;
+		greenGemX = gemX;
+		greenGemY = orangeGemY+35;
+		blueGemX = gemX;
+		blueGemY = greenGemY+35;
+		
+		cards = new Card[4];
+		
+		Toolkit tk = Toolkit.getDefaultToolkit(); 
+		missionCardImg = tk.getImage("res/missionCard1.png");
+		redGemImg = tk.getImage("res/redGem.png");
+		orangeGemImg = tk.getImage("res/orangeGem.png");
+		greenGemImg = tk.getImage("res/greenGem.png");
+		blueGemImg = tk.getImage("res/blueGem.png");
 		
 		cards[0] = new RedCard();
 		cards[1] = new OrangeCard();
 		cards[2] = new GreenCard();
 		cards[3] = new BlueCard(); 
 		
+		cardStatus = new CardStatus[4];
 		// 카드배열 섞기
 //		for (int i = 0; i < 10; i++) {
 //			int index1 = rand.nextInt(4); // 0 ~ 3
@@ -75,6 +85,9 @@ public class MissionCard {
 //			cards[index2] = temp;
 //		}
 		
+		
+//		1번에 2설정되면 2번으로 넘어가고 2번에 2설정 3번 2설정  
+		
 		// 카드별 개수 정하기
 		for (int i = 0; i < 4; i++) {
 			if (max != 0) {
@@ -84,6 +97,16 @@ public class MissionCard {
 			} else
 				cards[i].setCount(0); 
 		}
+		
+		{
+			int temp = gemY;
+			for (int i = 0; i < 4; i++) {
+				String status = "X " + Integer.toString(cards[i].getCount());
+				cardStatus[i] = new CardStatus(gemX+35, temp+20, status);
+				temp += 35;
+			}
+		}
+		
 	}
 
 	public void paint(Graphics g) {
@@ -102,6 +125,8 @@ public class MissionCard {
 		int greenGemY1 = greenGemY + gemHeight;
 		int blueGemX1 = blueGemX + gemWidth;
 		int blueGemY1 = blueGemY + gemHeight;
+		
+		
 		
 		g.drawImage(missionCardImg, 
 				x, y, x1, y1, 
@@ -122,6 +147,9 @@ public class MissionCard {
 		g.drawImage(blueGemImg, 
 				blueGemX, blueGemY, blueGemX1, blueGemY1, 
 				0, 0, gemW, gemH, GameCanvas.instance);
+		
+		for(int i=0;i<4;i++)
+			cardStatus[i].paint(g);
 	}
 	
 	public void update() {

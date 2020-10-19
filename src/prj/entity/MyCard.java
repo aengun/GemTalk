@@ -16,6 +16,9 @@ public class MyCard {
 	private int x; // 나의 카드 목록 좌표 x
 	private int y; // 나의 카드 목록 좌표 y
 	
+	private int gemX;
+	private int gemY;
+	
 	// 보석 좌표
 	private int redGemX;
 	private int redGemY;
@@ -34,6 +37,12 @@ public class MyCard {
 	private Image greenGemImg;
 	private Image blueGemImg;
 	private Image chanceGemImg;
+	private CardStatus[] cardStatus;
+	
+	private RedCard redCard;
+	private OrangeCard orangeCard;
+	private GreenCard greenCard;
+	
 	
 	private MyCardListener myCardListener;
 	
@@ -45,16 +54,21 @@ public class MyCard {
 		this.x = x;
 		this.y = y;
 		
-		this.redGemX = x+12;
-		this.redGemY = y+60;
-		this.orangeGemX = x+12;
-		this.orangeGemY = redGemY+35;
-		this.greenGemX = x+12;
-		this.greenGemY = orangeGemY+35;
-		this.blueGemX = x+12;
-		this.blueGemY = greenGemY+35;
-		this.chanceGemX = x + 95;
-		this.chanceGemY = (orangeGemY + greenGemY) / 2;
+		gemX = x+12;
+		gemY = y+60;
+		
+		redGemX = x+12;
+		redGemY = y+60;
+		orangeGemX = x+12;
+		orangeGemY = redGemY+35;
+		greenGemX = x+12;
+		greenGemY = orangeGemY+35;
+		blueGemX = x+12;
+		blueGemY = greenGemY+35;
+		chanceGemX = x + 95;
+		chanceGemY = (orangeGemY + greenGemY) / 2;
+		
+		cardStatus = new CardStatus[5];
 		
 		Toolkit tk = Toolkit.getDefaultToolkit(); 
 		myCardImg = tk.getImage("res/myCard1.png");
@@ -63,6 +77,19 @@ public class MyCard {
 		greenGemImg = tk.getImage("res/greenGem.png");
 		blueGemImg = tk.getImage("res/blueGem.png");
 		chanceGemImg = tk.getImage("res/chanceGem.png");
+		
+//		{red==1 color if(color == 1)
+//		cardStatus[color-1]= new CardStatus(gemX+35, temp+20젬색깔에 맞는 y좌표, status);
+//			int temp = gemY;
+//			for (int i = 0; i < 4; i++) {
+//				String status = "X " + Integer.toString();
+//				cardStatus[i] = new CardStatus(gemX+35, temp+20, status);
+//				temp += 35;
+//		
+//				if(i == 4)
+//					temp = chanceCard y에 맞게 설정
+//			}
+//		}
 	}
 	
 	public void paint(Graphics g) {

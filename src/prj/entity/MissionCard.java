@@ -37,35 +37,33 @@ public class MissionCard {
 	private Random rand = new Random(); 
 	
 	public MissionCard() {
-		this(0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0);
+		this(0, 0);
 	}
 	
-	public MissionCard(int x, int y, int redGemX, int redGemY, int orangeGemX, int orangeGemY, 
-			int greenGemX, int greenGemY, int blueGemX, int blueGemY) {
+	public MissionCard(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.redGemX = redGemX;
-		this.redGemY = redGemY;
-		this.orangeGemX = orangeGemX;
-		this.orangeGemY = orangeGemY;
-		this.greenGemX = greenGemX;
-		this.greenGemY = greenGemY;
-		this.blueGemX = blueGemX;
-		this.blueGemY = blueGemY;
 		
 		Toolkit tk = Toolkit.getDefaultToolkit(); 
-		this.missionCardImg = tk.getImage("res/missionCard.png");
+		this.missionCardImg = tk.getImage("res/missionCard1.png");
 		this.redGemImg = tk.getImage("res/redGem.png");
 		this.orangeGemImg = tk.getImage("res/orangeGem.png");
 		this.greenGemImg = tk.getImage("res/greenGem.png");
 		this.blueGemImg = tk.getImage("res/blueGem.png");
 		
+		this.redGemX = x+12;
+		this.redGemY = y+60;
+		this.orangeGemX = x+12;
+		this.orangeGemY = redGemY+35;
+		this.greenGemX = x+12;
+		this.greenGemY = orangeGemY+35;
+		this.blueGemX = x+12;
+		this.blueGemY = greenGemY+35;
 		
 		cards[0] = new RedCard();
 		cards[1] = new OrangeCard();
 		cards[2] = new GreenCard();
-		cards[3] = new BlueCard();    
+		cards[3] = new BlueCard(); 
 		
 		// 카드배열 섞기
 //		for (int i = 0; i < 10; i++) {
@@ -87,7 +85,7 @@ public class MissionCard {
 				cards[i].setCount(0); 
 		}
 	}
-	
+
 	public void paint(Graphics g) {
 		int mCardW = missionCardImg.getWidth(null);
 		int mCardH = missionCardImg.getHeight(null);

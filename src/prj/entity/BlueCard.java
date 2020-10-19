@@ -6,7 +6,7 @@ import java.awt.Image;
 public class BlueCard extends QuestionCard {
 	
 	private Image[] imgs;
-//	private int order;//10개의 질문을 구분하는 변수
+	//private int order;//10개의 질문을 구분하는 변수
 	//private static Image img;
 	
 	int[] blueCard = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

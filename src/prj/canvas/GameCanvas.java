@@ -61,6 +61,8 @@ public class GameCanvas extends Canvas {
 		for (int i = 0; i < 4; i++) 
 			playerBoards[i].paint(bg);
 		
+//		gameBoard.paint(bg);
+		
 		g.drawImage(buf, 0, 0, this);
 	}
 	

@@ -69,6 +69,7 @@ public class MissionCard {
 		greenGemImg = tk.getImage("res/greenGem.png");
 		blueGemImg = tk.getImage("res/blueGem.png");
 		
+		
 		cards[0] = new RedCard();
 		cards[1] = new OrangeCard();
 		cards[2] = new GreenCard();
@@ -97,8 +98,7 @@ public class MissionCard {
 			} else
 				cards[i].setCount(0); 
 		}
-		
-		{
+    {
 			int temp = gemY;
 			for (int i = 0; i < 4; i++) {
 				String status = "X " + Integer.toString(cards[i].getCount());
@@ -110,44 +110,12 @@ public class MissionCard {
 	}
 
 	public void paint(Graphics g) {
-		int mCardW = missionCardImg.getWidth(null);
-		int mCardH = missionCardImg.getHeight(null);
-		int gemW = redGemImg.getWidth(null);  // 어차피 gem들의 이미지크기는 같으므로 redGemImg를 대표로.
-		int gemH = redGemImg.getHeight(null);
-		
-		int x1 = x + cardWidth;
-		int y1 = y + cardHeight;
-		int redGemX1 = redGemX + gemWidth;
-		int redGemY1 = redGemY + gemHeight;
-		int orangeGemX1 = orangeGemX + gemWidth;
-		int orangeGemY1 = orangeGemY + gemHeight;
-		int greenGemX1 = greenGemX + gemWidth;
-		int greenGemY1 = greenGemY + gemHeight;
-		int blueGemX1 = blueGemX + gemWidth;
-		int blueGemY1 = blueGemY + gemHeight;
-		
-		
-		
-		g.drawImage(missionCardImg, 
-				x, y, x1, y1, 
-				0, 0, mCardW, mCardH, GameCanvas.instance);
-		
-		g.drawImage(redGemImg, 
-				redGemX, redGemY, redGemX1, redGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(orangeGemImg, 
-				orangeGemX, orangeGemY, orangeGemX1, orangeGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(greenGemImg, 
-				greenGemX, greenGemY, greenGemX1, greenGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
-		g.drawImage(blueGemImg, 
-				blueGemX, blueGemY, blueGemX1, blueGemY1, 
-				0, 0, gemW, gemH, GameCanvas.instance);
-		
+		g.drawImage(missionCardImg, x, y, GameCanvas.instance);
+		g.drawImage(redGemImg, redGemX, redGemY, gemWidth, gemHeight, GameCanvas.instance);
+		g.drawImage(orangeGemImg, orangeGemX, orangeGemY, gemWidth, gemHeight,GameCanvas.instance);
+		g.drawImage(greenGemImg, greenGemX, greenGemY,gemWidth, gemHeight, GameCanvas.instance);
+		g.drawImage(blueGemImg, blueGemX, blueGemY,gemWidth, gemHeight, GameCanvas.instance);
+	
 		for(int i=0;i<4;i++)
 			cardStatus[i].paint(g);
 	}

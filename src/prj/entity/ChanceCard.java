@@ -1,5 +1,6 @@
 package prj.entity;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 public class ChanceCard extends Card {
@@ -24,6 +25,10 @@ public class ChanceCard extends Card {
 	protected Image getImage() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	protected void paint(Graphics g) {
 	}
 
 }

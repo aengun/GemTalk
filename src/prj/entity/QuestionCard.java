@@ -1,5 +1,6 @@
 package prj.entity;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 public class QuestionCard extends Card {
@@ -20,6 +21,10 @@ public class QuestionCard extends Card {
 	public Image getImage() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	protected void paint(Graphics g) {
 	}
 
 	

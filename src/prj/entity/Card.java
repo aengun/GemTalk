@@ -18,7 +18,7 @@ public abstract class Card {
 	// 카드 사이즈
 	public static int width;
 	public static int height;
-	public static Image img;
+	public Image img;
 	public Image[] imgs;
 	public static String imgSrc;
 
@@ -39,8 +39,8 @@ public abstract class Card {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-//		int w = 154; // 카드 이미지 너비 ->이거는 생성자에
-//		int h = 218; // 카드 이미지 높이 ->이거는 생성자에
+//		int width = 154; // 카드 이미지 너비 ->이거는 생성자에
+//		int height = 218; // 카드 이미지 높이 ->이거는 생성자에
 
 	}
 

@@ -13,8 +13,6 @@ public class PlayerBoard {
 
 	private int x; // 플레이어 보드 좌표 x(직접 쓰이진 않음)
 	private int y; // 플레이어 보드 좌표 y
-	private int width = 500; // (직접 쓰이진 않음)
-	private int height = 500;
 
 	private Player player;
 
@@ -57,5 +55,4 @@ public class PlayerBoard {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
 }

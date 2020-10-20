@@ -10,96 +10,41 @@ public abstract class Card {
 	private int x;
 	private int y;
 
-	private int order; // 10개의 질문을 구분하는 변수
+	private int questionOrder; // 10개의 질문을 구분하는 변수
+	private int cardType; // 0:red, 1:orange, 2:green, 3:blue, 4:chance, 5:action
 
 	// 카드 사이즈
-	public static int width;
-	public static int height;
-	public Image img;
-	public Image[] imgs;
-	public static String imgSrc;
+	private static int width;
+	private static int height;
+	private Image img;
 
 	// 카드 갯수 카운트?
 	private int count;
 
 	// 인자가 없는 생성자
 	public Card() {
-		this(0, 0, 0, 0, null);
+		this(0, 0, null);
 	}
 
 	// 인자가 있는 생성자
-	public Card(int x, int y, int width, int height, String imgSrc) {
-
-		this.img = getImage();
+	public Card(int x, int y, String imgSrc) {
 
 		this.x = x;
 		this.y = y;
-		this.width = width;
-		this.height = height;
-//		int width = 154; // 카드 이미지 너비 ->이거는 생성자에
-//		int height = 218; // 카드 이미지 높이 ->이거는 생성자에
+		width = 154; // 카드 이미지 너비 ->이거는 생성자에
+		height = 218; // 카드 이미지 높이 ->이거는 생성자에
 
 	}
 
-	protected abstract Image getImage(); // 자식만 구현하기 위해서 protected?
+	public abstract void paint(Graphics g);
 
-//		this.x = x;
-//		this.y = y;
-//		width = 154;
-//		height = 218;
-//
-//		imgs = new Image[10];
-//	}
+	public void zoom() {
 
-	/*
-	 * order쓸 경우 생성자
-	 * 
-	 * public Card(){ this(0); }
-	 * 
-	 * public Card(int order) {
-	 * 
-	 * this.order = order; width = 154; height = 218;
-	 * 
-	 * }
-	 */
+	}
 
-//	public abstract void paint(Graphics g);	
+	public void move(int dx, int dy) { // player or trashcan
 
-	protected abstract void paint(Graphics g);
-
-//	{
-//
-//		// 그려낼 곳 좌표
-//		int x1 = this.width;
-//		int y1 = this.height;
-//		int x2 = x1 + this.width;
-//		int y2 = y1 + this.height;
-//		int p = 200;
-//
-//		// 아래에 부분은 각 클래스마다 페인트하면 될거같아서 abstract가 맞을거예요
-//		
-////		public abstract void paint(Graphics g);	// 여기도 protected 인가 public 인가?
-//
-//		img = Toolkit.getDefaultToolkit().getImage("res/cardDeck.png");
-//
-////		g.drawImage(img, 100, 80, 100, 200, this);  // g.drawImage(이미지, x좌표, y좌표, 높이, 너비, this)
-////		g.drawImage(img, 100, 300, 100 + 154, 518, 0, 0, w, h, this);  //g.drawImage(이미지, x1좌표, y1좌표, x2좌표, y2좌표, w, h, this)
-////		g.drawImage(img, x1, y1, x2, y2, 0, 0, width, height, this);
-////		g.drawImage(img, x1, y1, x2, y2, 0, 0, w, h, this);
-//
-//		img = Toolkit.getDefaultToolkit().getImage("res/questionCard.png");
-////		g.drawImage(img, 300, 80, 100, 200, this);
-////		g.drawImage(img, 400, 300, 400 + 154, 518, 0, 0, w, h, this);
-////		g.drawImage(img, x1+p, y1, x2+p, y2, 0, 0, width, height, this);
-//
-//		img = Toolkit.getDefaultToolkit().getImage("res/questionCard.png");
-////		g.drawImage(img, 500, 80, 100, 200, this);
-////		g.drawImage(img, 700, 300, 700 + 154, 518, 0, 0, w, h, this);
-////		g.drawImage(img, x1+p*2, y1, x2+p*2, y2, 0, 0, width, height, this);
-//
-//	}
-
-	
+	}
 
 	public int getCount() {
 		return count;
@@ -109,33 +54,20 @@ public abstract class Card {
 		this.count = count;
 	}
 
-	public void zoom() {
-
+	public int getQuestionOrder() {
+		return questionOrder;
 	}
 
-	public void move(int dx, int dy) {
-
-		// 선택된 카드가 이동해야 한다. Player에게 또는 TrashCan으로
-		// 어디서 이동하는가? -> 카드덱(1), 바닥에 깔린 1번 카드(2) 2번 카드(3) 좌표에서
-		// 그러면 1, 2, 3, 의 좌표가 있고 이동 할 곳의 좌표가 있어야 한다.
-		// 어디로 이동할 것인가? -> 그렇다면 dx, dy가 필요하다.
-		// dx, dy 가 Player, TrashCan 각각 필요한가? ->
-
-//		this.dx = x;
-//		this.dy = y;
-
-		// Player 에게 간다. -> 플레이어 이미지 좌표?
-
-		// TrashCan 으로 간다. -> 보이지 않는 어딘가의 좌표
-
+	public void setQuestionOrder(int questionOrder) {
+		this.questionOrder = questionOrder;
 	}
 
-	public int getOrder() {
-		return order;
+	public int getCardType() {
+		return cardType;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setCardType(int cardType) {
+		this.cardType = cardType;
 	}
 
 }

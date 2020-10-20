@@ -24,7 +24,7 @@ public class Player {
 	public Player() {
 		this(0, 0, 1);
 	}
-
+	
 	public Player(int pbX, int pbY, int imgNum) {
 		switch (imgNum) {
 		case 1:
@@ -49,12 +49,32 @@ public class Player {
 
 	}
 
-	public void choice(int x, int y) {
-
+	public boolean vote() {
+//		JOptionPane.showConfirmDialog();
+//		if(찬성)
+//			return true;
+		
+		return false;
 	}
 
 	public void answer() {
-
+//		scanner
+		
+	}
+	
+	//윈을 체크하는 메소드
+	public void onWin() {
+		
+		
+//		myCard.getRedCount == missionCard.getCards()[0].getMissionCount();
+//		
+//		myCard.getOrangeCount == missionCard.getCards()[1].getMissionCount();
+//		
+//		myCard.getGreenCount == missionCard.getCards()[2].getMissionCount();
+//		
+//		myCard.getBlueCount == missionCard.getCards()[3].getMissionCount();
+		
+//		chanceCount == ?
 	}
 
 	public void paint(Graphics g) {
@@ -85,6 +105,14 @@ public class Player {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public MyCard getMyCard() {
+		return myCard;
+	}
+
+	public void setMyCard(MyCard myCard) {
+		this.myCard = myCard;
 	}
 
 }

@@ -19,7 +19,7 @@ public abstract class Card {
 	private Image img;
 
 	// 카드 갯수 카운트?
-	private int count;
+	private int missionCount;
 
 	// 인자가 없는 생성자
 	public Card() {
@@ -37,21 +37,40 @@ public abstract class Card {
 	}
 
 	public abstract void paint(Graphics g);
+	
+	public boolean choiceCard(int x, int y) {
+		int w = this.width;
+		int h = this.height;
+		int x1 = this.x;
+		int y1 = this.y;
+		int x2 = x1+w;
+		int y2 = y1+h;
+		
+		if((x1  < x && x < x2)  
+				&& (y1 < y && y < y2))
+			return true;
+		
+		return false;
+	}
 
-	public void zoom() {
+	public void zoomIn() {
+
+	}
+	
+	public void zoomOut() {
 
 	}
 
-	public void move(int dx, int dy) { // player or trashcan
-
+	public int move(int turn) { 
+		return cardType;
 	}
 
-	public int getCount() {
-		return count;
+	public int getMissionCount() {
+		return missionCount;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setMissionCount(int missionCount) {
+		this.missionCount = missionCount;
 	}
 
 	public int getQuestionOrder() {
@@ -69,5 +88,15 @@ public abstract class Card {
 	public void setCardType(int cardType) {
 		this.cardType = cardType;
 	}
+
+	public Image getImg() {
+		return img;
+	}
+
+	public void setImg(Image img) {
+		this.img = img;
+	}
+
+	
 
 }

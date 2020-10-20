@@ -34,20 +34,4 @@ public class CardDeck extends Card {
 		g.drawImage(img, x, y, GameCanvas.instance);
 	}
 
-	public int isSelected(int x, int y) {
-
-		int w = this.width;
-		int h = this.height;
-		int x1 = this.x;
-		int y1 = this.y;
-		int x2 = x1 + w;
-		int y2 = y1 + h;
-
-		if ((x1 <= x && x <= x2) && (y1 <= y && y <= y2)) {
-			return 1;
-		}
-
-		return 0;
-	}
-
 }

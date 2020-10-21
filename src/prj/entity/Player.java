@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import prj.canvas.GameCanvas;
 
@@ -57,8 +58,13 @@ public class Player {
 		return false;
 	}
 
-	public void answer() {
-//		scanner
+	public void answer(int playTurn) {
+//		String answer = JOptionPane.showInputDialog("대답을 입력하세요");
+		String answer = JOptionPane.showInputDialog(GameCanvas.instance, "대답을 입력하세요");
+
+		String text = "player"+Integer.toString(playTurn)+"의 대답입니다";
+		
+		JOptionPane.showMessageDialog(GameCanvas.instance, answer,text,JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 	

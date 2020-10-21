@@ -76,7 +76,7 @@ public class GameCanvas extends Canvas {
 					Card temp = cardList.get(0);
 					gameBoard.check(temp);
 
-					playerBoards[playTurn].getPlayer().answer();// answer
+					playerBoards[playTurn].getPlayer().answer(playTurn+1);// answer
 					for (int i = 0; i < 4; i++)
 						if (i != playTurn) 
 							if (playerBoards[i].getPlayer().vote())// vote
@@ -84,7 +84,7 @@ public class GameCanvas extends Canvas {
 
 					if (voteCount >= 2) {
 						cardType = card1.getCardType();// move - myCard 연계
-						playerBoards[playTurn].getPlayer().getMyCard().move(cardType);
+						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
 					}
 					card1.zoomOut();// zoomout 객체는 살아있지만 paint는 안되는
 
@@ -98,7 +98,7 @@ public class GameCanvas extends Canvas {
 					Card temp = cardList.get(0);
 					gameBoard.check(temp);
 
-					playerBoards[playTurn].getPlayer().answer();
+					playerBoards[playTurn].getPlayer().answer(playTurn+1);
 					for (int i = 0; i < 4; i++)
 							if (i != playTurn)
 								if (playerBoards[i].getPlayer().vote())// vote
@@ -106,7 +106,7 @@ public class GameCanvas extends Canvas {
 					
 					if (voteCount >= 2) {
 						cardType = card2.getCardType();// move - myCard 연계
-						playerBoards[playTurn].getPlayer().getMyCard().move(cardType);
+						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
 					}
 					
 					card2.zoomOut();
@@ -117,10 +117,18 @@ public class GameCanvas extends Canvas {
 				} else if (cardDeck.choiceCard(x, y)) {
 					cardList.get(0).zoomIn();
 
-					playerBoards[playTurn].getPlayer().answer();
+					playerBoards[playTurn].getPlayer().answer(playTurn+1);
 					for (int i = 0; i < 4; i++)
 						if(cardList.get(0).getCardType() == 4 || cardList.get(0).getCardType()  == 5)
-							voteCount = 4;//action일때 실행하는 메서드 구현해야함!
+							voteCount = 4;//action일때 실행하는 메서드 구현해야함! cardList.get(0).getActionCardType == 0 cardList.get(0).give();
+//						else if(cardList.get(0).getCardType()  == 5){
+//							cardList.get(0).giveOrTake();
+//			===========================================================================		
+//							if( cardList.get(0).getActionCardType == 0)
+//									cardList.get(0).give();
+//							else if (cardList.get(0).getActionCardType == 1)
+//									cardList.get(0).take();
+//						}
 						else 
 							if (i != playTurn)
 								if (playerBoards[i].getPlayer().vote())// vote
@@ -128,7 +136,7 @@ public class GameCanvas extends Canvas {
 					
 					if (voteCount >= 2) {
 						cardType = cardDeck.getCardType();// move - myCard 연계
-						playerBoards[playTurn].getPlayer().getMyCard().move(cardType);
+						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
 					}
 					cardList.get(0).getCardType();
 					cardList.remove(0);// zoomout역할

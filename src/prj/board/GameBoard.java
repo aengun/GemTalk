@@ -121,8 +121,6 @@ public class GameBoard {
 		
 //		g.drawImage(card1.getImg(), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, GameCanvas.instance);
 //		g.drawImage(card2.getImg(), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, GameCanvas.instance);
-//		card1.paint(g);
-//		card2.paint(g);
 
 //		g.drawImage(img, x, 0,x+500,640,0,0,img.getWidth(null),img.getHeight(null), GameCanvas.instance);
 

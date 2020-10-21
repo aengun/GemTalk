@@ -61,7 +61,7 @@ public abstract class Card {
 
 	}
 
-	public int move(int turn) { 
+	public int moveToPlayer() { 
 		return cardType;
 	}
 

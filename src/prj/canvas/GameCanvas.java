@@ -62,7 +62,7 @@ public class GameCanvas extends Canvas {
 				int x = e.getX();
 				int y = e.getY();
 				int voteCount = 0;
-				int type = 0;
+				int cardType = 0;
 
 				Card card1 = gameBoard.getCard1();
 				Card card2 = gameBoard.getCard2();
@@ -78,14 +78,13 @@ public class GameCanvas extends Canvas {
 
 					playerBoards[playTurn].getPlayer().answer();// answer
 					for (int i = 0; i < 4; i++)
-						if (i != playTurn) {
+						if (i != playTurn) 
 							if (playerBoards[i].getPlayer().vote())// vote
 								voteCount++;
-						}
 
 					if (voteCount >= 2) {
-						type = card1.moveToPlayer();// move - myCard 연계
-						playerBoards[playTurn].getPlayer().getMyCard().move(type);
+						cardType = card1.getCardType();// move - myCard 연계
+						playerBoards[playTurn].getPlayer().getMyCard().move(cardType);
 					}
 					card1.zoomOut();// zoomout 객체는 살아있지만 paint는 안되는
 
@@ -104,9 +103,10 @@ public class GameCanvas extends Canvas {
 							if (i != playTurn)
 								if (playerBoards[i].getPlayer().vote())// vote
 									voteCount++;
+					
 					if (voteCount >= 2) {
-						type = card2.moveToPlayer();// move - myCard 연계
-						playerBoards[playTurn].getPlayer().getMyCard().move(type);
+						cardType = card2.getCardType();// move - myCard 연계
+						playerBoards[playTurn].getPlayer().getMyCard().move(cardType);
 					}
 					
 					card2.zoomOut();
@@ -121,17 +121,16 @@ public class GameCanvas extends Canvas {
 					for (int i = 0; i < 4; i++)
 						if(cardList.get(0).getCardType() == 4 || cardList.get(0).getCardType()  == 5)
 							voteCount = 4;//action일때 실행하는 메서드 구현해야함!
-						else {
+						else 
 							if (i != playTurn)
 								if (playerBoards[i].getPlayer().vote())// vote
 									voteCount++;
-						}
 					
 					if (voteCount >= 2) {
-						type = cardDeck.moveToPlayer();// move - myCard 연계
-						playerBoards[playTurn].getPlayer().getMyCard().move(type);
-					
-					cardList.get(0).moveToPlayer();
+						cardType = cardDeck.getCardType();// move - myCard 연계
+						playerBoards[playTurn].getPlayer().getMyCard().move(cardType);
+					}
+					cardList.get(0).getCardType();
 					cardList.remove(0);// zoomout역할
 
 					playTurn = (++playTurn % 4);

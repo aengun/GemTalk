@@ -64,8 +64,6 @@ public class Player {
 	
 	//윈을 체크하는 메소드
 	public void onWin() {
-		
-		
 //		myCard.getRedCount == missionCard.getCards()[0].getMissionCount();
 //		
 //		myCard.getOrangeCount == missionCard.getCards()[1].getMissionCount();

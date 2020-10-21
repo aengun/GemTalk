@@ -76,18 +76,6 @@ public class MissionCard {
 		cards[3] = new BlueCard(); 
 		
 		cardStatus = new CardStatus[4];
-		// 카드배열 섞기
-//		for (int i = 0; i < 10; i++) {
-//			int index1 = rand.nextInt(4); // 0 ~ 3
-//			int index2 = rand.nextInt(4); // 0 ~ 3
-//			
-//			Card temp = cards[index1];
-//			cards[index1] = cards[index2];
-//			cards[index2] = temp;
-//		}
-		
-		
-//		1번에 2설정되면 2번으로 넘어가고 2번에 2설정 3번 2설정  
 		
 		// 카드별 개수 정하기
 		for (int i = 0; i < 4; i++) {
@@ -95,15 +83,15 @@ public class MissionCard {
 				int tempCount = rand.nextInt(max) + 1; // 1 ~ 6
 				if(tempCount>3)
 					tempCount = 3;
-				cards[i].setCount(tempCount);
+				cards[i].setMissionCount(tempCount);
 				max -= tempCount;
 			} else
-				cards[i].setCount(0); 
+				cards[i].setMissionCount(0); 
 		}
     {
 			int temp = gemY;
 			for (int i = 0; i < 4; i++) {
-				String status = "X " + Integer.toString(cards[i].getCount());
+				String status = "X " + Integer.toString(cards[i].getMissionCount());
 				cardStatus[i] = new CardStatus(gemX+35, temp+20, status);
 				temp += 35;
 			}
@@ -125,4 +113,14 @@ public class MissionCard {
 	public void update() {
 
 	}
+
+	public Card[] getCards() {
+		return cards;
+	}
+
+	public void setCards(Card[] cards) {
+		this.cards = cards;
+	}
+	
+
 }

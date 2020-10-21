@@ -29,6 +29,7 @@ public class GameBoard {
 	private Card card2;
 	private int x;
 	private int y;
+//	private int playTurn;
 //	private Game
 
 	private Random rand;
@@ -84,14 +85,18 @@ public class GameBoard {
 		card2 = cardList.get(0);
 		cardList.remove(0);
 	}
-
+	
 	public void check() {
+		check(cardList.get(0));
+	}
+	
+	public void check(Card card) {
 		boolean check = true;
+		
 		while (check) {
-			if (cardList.get(0).getCardType() == 4 || cardList.get(0).getCardType() == 5) {
-				Card temp = cardList.get(0);
+			if (card.getCardType() == 4 || card.getCardType() == 5) {
 				cardList.remove(0);
-				cardList.add(temp);
+				cardList.add(card);
 			} else {
 				check = false;
 			}
@@ -113,11 +118,48 @@ public class GameBoard {
 
 		g.drawImage(img, x, y, x + 530, y + 240, 0, 0, img.getWidth(null), img.getHeight(null), GameCanvas.instance);
 		cardDeck.paint(g);
-		card1.paint(g);
-		card2.paint(g);
+		
+//		g.drawImage(card1.getImg(), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, GameCanvas.instance);
+//		g.drawImage(card2.getImg(), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, GameCanvas.instance);
+//		card1.paint(g);
+//		card2.paint(g);
 
 //		g.drawImage(img, x, 0,x+500,640,0,0,img.getWidth(null),img.getHeight(null), GameCanvas.instance);
 
 	}
+
+	public CardDeck getCardDeck() {
+		return cardDeck;
+	}
+
+	public void setCardDeck(CardDeck cardDeck) {
+		this.cardDeck = cardDeck;
+	}
+
+	public Card getCard1() {
+		return card1;
+	}
+
+	public void setCard1(Card card1) {
+		this.card1 = card1;
+	}
+
+	public Card getCard2() {
+		return card2;
+	}
+
+	public void setCard2(Card card2) {
+		this.card2 = card2;
+	}
+
+	public List<Card> getCardList() {
+		return cardList;
+	}
+
+	public void setCardList(List<Card> cardList) {
+		this.cardList = cardList;
+	}
+	
+	
 
 }

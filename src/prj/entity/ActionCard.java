@@ -26,4 +26,6 @@ public class ActionCard extends Card {
 	@Override
 	public void paint(Graphics g) {
 	}
+
+	
 }

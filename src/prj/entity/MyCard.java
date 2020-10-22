@@ -97,7 +97,7 @@ public class MyCard {
 		}
 	}
 
-	public void move(int cardType) {
+	public void moveToPlayer(int cardType) {
 		switch (cardType) {
 		case 0:
 			gemsCount[0]++;

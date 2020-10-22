@@ -67,7 +67,7 @@ public class GameBoard {
 			else if (i < 40)
 				cards[i] = new BlueCard(i % 10);
 			else if (i < 45)
-				cards[i] = new ActionCard();
+				cards[i] = new ActionCard(i%2);
 			else
 				cards[i] = new ChanceCard();
 		}

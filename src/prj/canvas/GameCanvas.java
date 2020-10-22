@@ -79,7 +79,7 @@ public class GameCanvas extends Canvas {
 					playerBoards[playTurn].getPlayer().answer();// answer
 					for (int i = 0; i < 4; i++)
 						if (i != playTurn) {
-							if (playerBoards[i].getPlayer().vote())// vote
+							if (playerBoards[i].getPlayer().vote() == 0)// vote
 								voteCount++;
 						}
 
@@ -101,14 +101,14 @@ public class GameCanvas extends Canvas {
 
 					playerBoards[playTurn].getPlayer().answer();
 					for (int i = 0; i < 4; i++)
-							if (i != playTurn)
-								if (playerBoards[i].getPlayer().vote())// vote
-									voteCount++;
+						if (i != playTurn)
+							if (playerBoards[i].getPlayer().vote() == 0)// vote
+								voteCount++;
 					if (voteCount >= 2) {
 						type = card2.moveToPlayer();// move - myCard 연계
 						playerBoards[playTurn].getPlayer().getMyCard().move(type);
 					}
-					
+
 					card2.zoomOut();
 
 					gameBoard.setCard2(temp);
@@ -119,18 +119,18 @@ public class GameCanvas extends Canvas {
 
 					playerBoards[playTurn].getPlayer().answer();
 					for (int i = 0; i < 4; i++)
-						if(cardList.get(0).getCardType() == 4 || cardList.get(0).getCardType()  == 5)
-							voteCount = 4;//action일때 실행하는 메서드 구현해야함!
+						if (cardList.get(0).getCardType() == 4 || cardList.get(0).getCardType() == 5)
+							voteCount = 4;// action일때 실행하는 메서드 구현해야함!
 						else {
 							if (i != playTurn)
-								if (playerBoards[i].getPlayer().vote())// vote
+								if (playerBoards[i].getPlayer().vote() == 0)// vote
 									voteCount++;
 						}
-					
+
 					if (voteCount >= 2) {
 						type = cardDeck.moveToPlayer();// move - myCard 연계
 						playerBoards[playTurn].getPlayer().getMyCard().move(type);
-					
+					}
 					cardList.get(0).moveToPlayer();
 					cardList.remove(0);// zoomout역할
 

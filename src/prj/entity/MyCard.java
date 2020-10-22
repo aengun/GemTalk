@@ -98,28 +98,7 @@ public class MyCard {
 	}
 
 	public void moveToPlayer(int cardType) {
-		switch (cardType) {
-		case 0:
-			gemsCount[0]++;
-			break;
-
-		case 1:
-			gemsCount[1]++;
-			break;
-
-		case 2:
-			gemsCount[2]++;
-			break;
-
-		case 3:
-			gemsCount[3]++;
-			break;
-
-		case 4:
-			gemsCount[4]++;
-			break;
-		}
-
+		gemsCount[cardType]++;
 	}
 
 	public void paint(Graphics g) {

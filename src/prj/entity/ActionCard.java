@@ -21,38 +21,31 @@ public class ActionCard extends Card {
 		rand = new Random();
 	}
 
-	public void give() {//int playTurn give = ActionCardType(0)
+	@Override
+	public void giveOrTake(int playTurn) {//int playTurn give = ActionCardType(0)
 		int randomPlayer = rand.nextInt(4);
 		int randomCard = rand.nextInt(5);
 		
-//		boolean ch=true;
-//		while(ch) {
-//			if(randomPlayer == playTurn)
-//				randomPlayer = rand.nextInt(4);
-//			else
-//				ch = false;
-//		}playturn 0 randomplayer 2
+		boolean ch=true;
+		while(ch) {
+			if(randomPlayer == playTurn)
+				randomPlayer = rand.nextInt(4);
+			else
+				ch = false;
+		}
+		if(ActionCardType == 0) {
+//			getplayerBoard[playTurn].getpalyer.getmycard.getgemscount[randomCard]--;
+//			getplayerBoard[randomplayer].getpalyer.getmycard.getgemscount[randomCard]++;
 		
-//		getplayerBoard[playTurn].getpalyer.getmycard.getgemscount[randomCard]--;
-//		getplayerBoard[randomplayer].getpalyer.getmycard.getgemscount[randomCard]++;
+		}
+		else {
+			
+//			getplayerBoard[randomplayer].getpalyer.getmycard.getgemscount[randomCard]--;
+//			getplayerBoard[playTurn].getpalyer.getmycard.getgemscount[randomCard]++;
+		}
 		
 	}
 
-	public void take() {//take = ActionCardType(1)
-		int randomPlayer = rand.nextInt(4);
-		int randomCard = rand.nextInt(5);
-		
-//		boolean ch=true;
-//		while(ch) {
-//			if(randomPlayer == playTurn)
-//				randomPlayer = rand.nextInt(4);
-//			else
-//				ch = false;
-//		}
-		
-//		getplayerBoard[randomplayer].getpalyer.getmycard.getgemscount[randomCard]--;
-//		getplayerBoard[playTurn].getpalyer.getmycard.getgemscount[randomCard]++;
-	}
 
 	@Override
 	public void paint(Graphics g) {

@@ -93,6 +93,10 @@ public abstract class Card {
 		this.img = img;
 	}
 
+	public void giveOrTake(int playTurn) {
+		
+	}
+
 	
 
 }

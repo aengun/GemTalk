@@ -25,7 +25,7 @@ public class Player {
 	public Player() {
 		this(0, 0, 1);
 	}
-	
+
 	public Player(int pbX, int pbY, int imgNum) {
 		switch (imgNum) {
 		case 1:
@@ -50,12 +50,13 @@ public class Player {
 
 	}
 
-	public boolean vote() {
-//		JOptionPane.showConfirmDialog();
-//		if(찬성)
-//			return true;
+	public int vote() { // "O"선택 시 input : 0, "X"선택 시 input : 1
+
+		Object options[] = { "O", "X" };
+		int input = JOptionPane.showOptionDialog(GameCanvas.instance, "찬성하면 O, 반대하면 X를 눌러주세요", "찬/반 선택", JOptionPane.DEFAULT_OPTION,
+				JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 		
-		return false;
+		return input;
 	}
 
 	public void answer(int playTurn) {
@@ -65,10 +66,9 @@ public class Player {
 		String text = "player"+Integer.toString(playTurn)+"의 대답입니다";
 		
 		JOptionPane.showMessageDialog(GameCanvas.instance, answer,text,JOptionPane.INFORMATION_MESSAGE);
-		
 	}
-	
-	//윈을 체크하는 메소드
+
+	// 윈을 체크하는 메소드
 	public void onWin() {
 //		myCard.getRedCount == missionCard.getCards()[0].getMissionCount();
 //		
@@ -77,7 +77,7 @@ public class Player {
 //		myCard.getGreenCount == missionCard.getCards()[2].getMissionCount();
 //		
 //		myCard.getBlueCount == missionCard.getCards()[3].getMissionCount();
-		
+
 //		chanceCount == ?
 	}
 

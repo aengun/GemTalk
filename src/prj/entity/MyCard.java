@@ -24,7 +24,7 @@ public class MyCard {
 
 	// 내가 모은 보석(카드)의 개수
 	// red, orange, green, blue, chance 순
-	private int[] gemsCount = {0,0,0,0,0};
+	private int[] gemsCount = { 0, 0, 0, 0, 0 };
 
 	// 보석 좌표
 	private int redGemX;
@@ -58,10 +58,10 @@ public class MyCard {
 	public MyCard(int x, int y) {
 		this.x = x;
 		this.y = y;
-		
+
 		gemX = x + 12;
 		gemY = y + 60;
-		
+
 		redGemX = x + 12;
 		redGemY = y + 60;
 		orangeGemX = x + 12;
@@ -74,7 +74,7 @@ public class MyCard {
 		chanceGemY = (orangeGemY + greenGemY) / 2;
 
 		cardStatus = new CardStatus[5];
-	
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		myCardImg = tk.getImage("res/myCard1.png");
 		redGemImg = tk.getImage("res/redGem.png");
@@ -87,10 +87,10 @@ public class MyCard {
 		int temp = gemY;
 		for (int i = 0; i < 5; i++) {
 			String status = "X " + Integer.toString(gemsCount[i]);
-			
-			if (i == 4) 
-				cardStatus[i] = new CardStatus(chanceGemX + 35, chanceGemY+20, status);
-			else 
+
+			if (i == 4)
+				cardStatus[i] = new CardStatus(chanceGemX + 35, chanceGemY + 20, status);
+			else
 				cardStatus[i] = new CardStatus(gemX + 35, temp + 20, status);
 
 			temp += 35;

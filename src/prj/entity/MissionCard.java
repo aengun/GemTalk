@@ -11,6 +11,7 @@ public class MissionCard {
 
 	// private int cardWidth = 102; // 보석 뒤 배경
 	// private int cardHeight = 200;
+
 	private int gemWidth = 25; // 보석
 	private int gemHeight = 25;
 
@@ -77,17 +78,20 @@ public class MissionCard {
 		cardStatus = new CardStatus[4];
 
 		// 카드별 개수 정하기
-		for (int i = 0; i < 4; i++) {
-			if (max != 0) {
-				int tempCount = rand.nextInt(max) + 1; // 1 ~ 6
-				if (tempCount > 3)
-					tempCount = 3;
-				cards[i].setMissionCount(tempCount);
-				max -= tempCount;
-			} else
-				cards[i].setMissionCount(0);
+		for (int i = 0; i < max; i++) {
+			boolean ch = true;
+			int color = rand.nextInt(4);
+			
+			while(ch) {
+				if(cards[color].getMissionCount()>=3)
+					color = rand.nextInt(4);
+				else {
+					cards[color].setMissionCount(cards[color].getMissionCount() + 1);
+					ch = false;
+				}
+			}
 		}
-		
+
 		// 미션 카드에 "X 개수" 글자 찍기
 		int temp = gemY;
 		for (int i = 0; i < 4; i++) {
@@ -95,7 +99,6 @@ public class MissionCard {
 			cardStatus[i] = new CardStatus(gemX + 35, temp + 20, status);
 			temp += 35;
 		}
-
 	}
 
 	public void paint(Graphics g) {

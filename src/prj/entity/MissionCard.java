@@ -113,7 +113,7 @@ public class MissionCard {
 	}
 
 	public void update() {
-
+		// 얘는 굳이 구현할 필요가 있을까? 메서드를 삭제할까? - 10/22 19:04 조재희 -
 	}
 
 	public Card[] getCards() {

@@ -8,8 +8,8 @@ import prj.canvas.GameCanvas;
 
 public class BlueCard extends QuestionCard {
 
-	
 	private Image img;
+
 	public BlueCard() {
 		this(0);
 	}
@@ -18,7 +18,7 @@ public class BlueCard extends QuestionCard {
 
 		setQuestionOrder(order);
 		setCardType(3);
-		
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		img = tk.getImage("res/questionCard.png");
 	}

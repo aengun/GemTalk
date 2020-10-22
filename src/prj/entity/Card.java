@@ -46,10 +46,14 @@ public abstract class Card {
 		int x2 = x1 + w;
 		int y2 = y1 + h;
 
-		if ((x1 < x && x < x2) && (y1 < y && y < y2))
+		if ((x1 < x && x < x2) && (y1 < y && y < y2)) {
+			System.out.println("클릭됐다");
 			return true;
-		else
+		}
+		else {
+			System.out.println("클릭안됐다");
 			return false;
+		}
 	}
 
 	public void zoomIn() {
@@ -111,6 +115,5 @@ public abstract class Card {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
 
 }

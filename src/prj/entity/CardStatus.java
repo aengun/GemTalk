@@ -8,10 +8,10 @@ public class CardStatus {
 
 	private int x;
 	private int y;
-	private String status; // 보석 개수 표시 
-	
+	private String status; // 보석 개수 표시
+
 	public CardStatus() {
-		this(0,0,"");
+		this(0, 0, "");
 	}
 
 	public CardStatus(int x, int y, String status) {
@@ -26,7 +26,5 @@ public class CardStatus {
 		g.setColor(Color.BLACK);
 		g.drawString(status, x, y);
 	}
-	
+
 }
-
-

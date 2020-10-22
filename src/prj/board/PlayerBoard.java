@@ -57,7 +57,6 @@ public class PlayerBoard {
 	}
 
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		player.update();
 	}
 }

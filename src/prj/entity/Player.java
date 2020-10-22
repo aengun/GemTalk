@@ -94,6 +94,11 @@ public class Player {
 
 		g.drawImage(img, x1, y1, x2, y2, 0, 0, w, h, GameCanvas.instance);
 	}
+	
+	public void update() {
+		//missionCard.update();
+		myCard.update();
+	}
 
 	public int getX() {
 		return x;
@@ -118,5 +123,6 @@ public class Player {
 	public void setMyCard(MyCard myCard) {
 		this.myCard = myCard;
 	}
+
 
 }

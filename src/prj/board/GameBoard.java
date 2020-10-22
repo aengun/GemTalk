@@ -127,9 +127,9 @@ public class GameBoard {
 //		g.drawImage(img, x, 0,x+500,640,0,0,img.getWidth(null),img.getHeight(null), GameCanvas.instance);
 
 	}
-	
+
 	public void update() {
-		
+
 	}
 
 	public CardDeck getCardDeck() {

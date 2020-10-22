@@ -8,6 +8,7 @@ import prj.canvas.GameCanvas;
 
 public class RedCard extends QuestionCard {
 	private Image img;
+
 	public RedCard() {
 		this(0);
 	}
@@ -22,7 +23,7 @@ public class RedCard extends QuestionCard {
 
 	@Override
 	public void paint(Graphics g) {
-		
+
 		g.drawImage(img, getX(), getY(), GameCanvas.instance);
 	}
 }

@@ -8,6 +8,7 @@ import prj.canvas.GameCanvas;
 
 public class GreenCard extends QuestionCard {
 	private Image img;
+
 	public GreenCard() {
 		this(0);
 	}

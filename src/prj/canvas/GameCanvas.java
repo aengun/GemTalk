@@ -56,7 +56,32 @@ public class GameCanvas extends Canvas {
 //					imgLose.paint
 //			}
 //		});
-	
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					
+					for (int i = 0; i < 4; i++) {
+						// 얘를 해줘야 repaint를 할때 변경된 부분이 적용되어 다시 그려진다.
+						playerBoards[i].update(); 
+					}
+					gameBoard.update();
+
+					// repaint() -> Canvas.update()가 화면을 지움 -> Canvas.paint(g)가 다시 그림
+					repaint(); // 이걸 안하면 시작화면에서 그대로 멈춤(그린걸 지우고 다시 그리지를 않으므로)
+
+					try {
+						Thread.sleep(17); // 60fps(1초에 60번 while문 반복)
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
+				}
+
+			}
+		}).start();
 
 		addMouseListener(new MouseAdapter() {
 
@@ -154,10 +179,10 @@ public class GameCanvas extends Canvas {
 		Graphics bg = buf.getGraphics();
 
 		gameBackground.paint(bg);
+		gameBoard.paint(bg);
+		
 		for (int i = 0; i < 4; i++)
 			playerBoards[i].paint(bg);
-
-		gameBoard.paint(bg);
 
 		g.drawImage(buf, 0, 0, this);
 	}

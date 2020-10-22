@@ -39,7 +39,6 @@ public class GameBoard {
 		try {
 			img = ImageIO.read(new File("res/gameBoardBackground.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

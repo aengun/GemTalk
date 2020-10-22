@@ -33,17 +33,17 @@ public class GameFrame extends Frame {
 
 		File bgm = new File("res/bgm.wav");
 
-		try {
-
-			AudioInputStream stream = AudioSystem.getAudioInputStream(bgm);
-			Clip clip = AudioSystem.getClip();
-			clip.open(stream);
-			clip.start();
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
+//		try {
+//
+//			AudioInputStream stream = AudioSystem.getAudioInputStream(bgm);
+//			Clip clip = AudioSystem.getClip();
+//			clip.open(stream);
+//			clip.start();
+//
+//		} catch (Exception e) {
+//
+//			e.printStackTrace();
+//		}
 
 		addWindowListener(new WindowAdapter() {
 

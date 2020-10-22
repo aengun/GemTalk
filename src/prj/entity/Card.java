@@ -61,10 +61,6 @@ public abstract class Card {
 
 	}
 
-	public int moveToPlayer() { 
-		return cardType;
-	}
-
 	public int getMissionCount() {
 		return missionCount;
 	}

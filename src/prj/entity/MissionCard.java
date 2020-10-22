@@ -9,8 +9,9 @@ import prj.canvas.GameCanvas;
 
 public class MissionCard {
 
-	private int cardWidth = 102; // 보석 뒤 배경
-	private int cardHeight = 200;
+	// private int cardWidth = 102; // 보석 뒤 배경
+	// private int cardHeight = 200;
+
 	private int gemWidth = 25; // 보석
 	private int gemHeight = 25;
 
@@ -77,29 +78,27 @@ public class MissionCard {
 		cardStatus = new CardStatus[4];
 
 		// 카드별 개수 정하기
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < max; i++) {
+			boolean ch = true;
 			int color = rand.nextInt(4);
-			switch (color) {
-			case 0:
-				cards[0].setMissionCount(cards[0].getMissionCount() + 1);
-			case 1:
-				cards[1].setMissionCount(cards[1].getMissionCount() + 1);
-			case 2:
-				cards[2].setMissionCount(cards[2].getMissionCount() + 1);
-			case 3:
-				cards[3].setMissionCount(cards[3].getMissionCount() + 1);
+			
+			while(ch) {
+				if(cards[color].getMissionCount()>=3)
+					color = rand.nextInt(4);
+				else {
+					cards[color].setMissionCount(cards[color].getMissionCount() + 1);
+					ch = false;
+				}
 			}
 		}
 
-		{
-			int temp = gemY;
-			for (int i = 0; i < 4; i++) {
-				String status = "X " + Integer.toString(cards[i].getMissionCount());
-				cardStatus[i] = new CardStatus(gemX + 35, temp + 20, status);
-				temp += 35;
-			}
+		// 미션 카드에 "X 개수" 글자 찍기
+		int temp = gemY;
+		for (int i = 0; i < 4; i++) {
+			String status = "X " + Integer.toString(cards[i].getMissionCount());
+			cardStatus[i] = new CardStatus(gemX + 35, temp + 20, status);
+			temp += 35;
 		}
-
 	}
 
 	public void paint(Graphics g) {

@@ -9,6 +9,8 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
+
 import prj.board.GameBoard;
 import prj.board.PlayerBoard;
 import prj.entity.Card;
@@ -40,7 +42,7 @@ public class GameCanvas extends Canvas {
 		int gameBoardX = playerBoards[0].getPlayer().getX();
 		int gameBoardY = playerBoards[0].getPlayer().getY() + 180;
 
-		gameBoard = new GameBoard(gameBoardX, gameBoardY);
+		gameBoard = new GameBoard(gameBoardX, gameBoardY); // 350x225
 
 		// 우승할 때 인터페이스 꽂는 부분
 //		myCard.setMyCardListener(new MyCardListener() {
@@ -54,6 +56,7 @@ public class GameCanvas extends Canvas {
 //					imgLose.paint
 //			}
 //		});
+	
 
 		addMouseListener(new MouseAdapter() {
 
@@ -88,7 +91,7 @@ public class GameCanvas extends Canvas {
 					}
 					card1.zoomOut();// zoomout 객체는 살아있지만 paint는 안되는
 
-					gameBoard.setCard1(temp);
+//					gameBoard.setCard1(temp);
 
 					playTurn = ++playTurn % 4;
 
@@ -111,7 +114,7 @@ public class GameCanvas extends Canvas {
 
 					card2.zoomOut();
 
-					gameBoard.setCard2(temp);
+//					gameBoard.setCard2(temp);
 
 					playTurn = ++playTurn % 4;
 				} else if (cardDeck.choiceCard(x, y)) {
@@ -129,14 +132,15 @@ public class GameCanvas extends Canvas {
 								if (playerBoards[i].getPlayer().vote() == 0)
 									voteCount++;
 						}
+					System.out.println(voteCount);
 					playTurn = ++playTurn % 4;
 				}
 
-				if (voteCount >= 2) {
-					cardType = cardDeck.getCardType();// move - myCard 연계
-					playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
-				}
-				cardList.remove(0);// zoomout역할
+//				if (voteCount >= 2) {
+//					cardType = cardDeck.getCardType();// move - myCard 연계
+//					playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
+//				}
+//				cardList.remove(0);// zoomout역할
 
 			}
 

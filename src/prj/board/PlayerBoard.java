@@ -55,4 +55,9 @@ public class PlayerBoard {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

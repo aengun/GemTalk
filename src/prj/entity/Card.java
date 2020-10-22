@@ -14,8 +14,8 @@ public abstract class Card {
 	private int cardType; // 0:red, 1:orange, 2:green, 3:blue, 4:chance, 5:action
 
 	// 카드 사이즈
-	private static int width;
-	private static int height;
+	private int width;
+	private int height;
 	private Image img;
 
 	// 카드 갯수 카운트?
@@ -23,11 +23,11 @@ public abstract class Card {
 
 	// 인자가 없는 생성자
 	public Card() {
-		this(0, 0, null);
+		this(0, 0);
 	}
 
 	// 인자가 있는 생성자
-	public Card(int x, int y, String imgSrc) {
+	public Card(int x, int y) {
 
 		this.x = x;
 		this.y = y;
@@ -37,26 +37,25 @@ public abstract class Card {
 	}
 
 	public abstract void paint(Graphics g);
-	
+
 	public boolean choiceCard(int x, int y) {
-		int w = this.width;
-		int h = this.height;
+		int w = width;
+		int h = height;
 		int x1 = this.x;
 		int y1 = this.y;
-		int x2 = x1+w;
-		int y2 = y1+h;
-		
-		if((x1  < x && x < x2)  
-				&& (y1 < y && y < y2))
+		int x2 = x1 + w;
+		int y2 = y1 + h;
+
+		if ((x1 < x && x < x2) && (y1 < y && y < y2))
 			return true;
-		
-		return false;
+		else
+			return false;
 	}
 
 	public void zoomIn() {
 
 	}
-	
+
 	public void zoomOut() {
 
 	}
@@ -94,9 +93,24 @@ public abstract class Card {
 	}
 
 	public void giveOrTake(int playTurn) {
-		
+
 	}
 
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 	
 
 }

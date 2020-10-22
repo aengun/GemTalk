@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import prj.canvas.GameCanvas;
 
+
 public class MyCard {
 
 	// private int cardWidth = 185; // 보석 뒤 배경
@@ -116,7 +117,7 @@ public class MyCard {
 
 	// MyCard의 보석 개수를 업데이트하는 메서드가 필요할 것 같아서 추가
 	public void update() {
-
+		
 		// 보석 개수를 업뎃하면서 미션카드와 보석 개수가 일치하면 onWin 실행하기 MissionCard에서 설정된 젬들을 불러와야함(구분은
 		// cardType)
 		myCardListener.onWin();// onWin은 myCard와 missionCard의 타입들을 비교해야하므로 player로 가는게 나을거 같아요

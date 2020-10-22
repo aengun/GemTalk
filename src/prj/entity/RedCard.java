@@ -1,9 +1,13 @@
 package prj.entity;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
+import prj.canvas.GameCanvas;
 
 public class RedCard extends QuestionCard {
-
+	private Image img;
 	public RedCard() {
 		this(0);
 	}
@@ -12,11 +16,13 @@ public class RedCard extends QuestionCard {
 
 		setQuestionOrder(order);
 		setCardType(0);
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		img = tk.getImage("res/questionCard.png");
 	}
 
 	@Override
 	public void paint(Graphics g) {
-
-//		g.drawImage(imgs, dx1, dy1, dx2, dy2, sx1+w*order, sy1, sx2w*(oreder+1), sy2, observer)
+		
+		g.drawImage(img, getX(), getY(), GameCanvas.instance);
 	}
 }

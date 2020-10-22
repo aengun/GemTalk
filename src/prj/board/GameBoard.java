@@ -25,10 +25,11 @@ public class GameBoard {
 	private Card[] cards;
 	private List<Card> cardList;
 	private CardDeck cardDeck;
-	private Card card1;
-	private Card card2;
 	private int x;
 	private int y;
+
+	private Card card1;
+	private Card card2;
 //	private int playTurn;
 //	private Game
 
@@ -55,8 +56,9 @@ public class GameBoard {
 		cards = new Card[50];
 		cardList = new ArrayList<>();
 		rand = new Random();
-		cardDeck = new CardDeck(x, y);
+		cardDeck = new CardDeck(x + 20, y + 20); // 355,255
 
+		// 어레이리스트에 넣기 전에 배열에 50장의 카드 먼저 넣기
 		for (int i = 0; i < 50; i++) {
 			if (i < 10)
 				cards[i] = new RedCard(i % 10); // 0-9
@@ -67,31 +69,27 @@ public class GameBoard {
 			else if (i < 40)
 				cards[i] = new BlueCard(i % 10);
 			else if (i < 45)
-				cards[i] = new ActionCard(i%2);
+				cards[i] = new ActionCard(i % 2);
 			else
 				cards[i] = new ChanceCard();
 		}
 
-		shuffle();
+		shuffle(); // 배열 섞기
 
+		// 섞은 배열을 어레이리스트에 넣기
 		for (int i = 0; i < 50; i++)
 			cardList.add(cards[i]);
-
-		check();
+		check(cardList.get(0)); // 이거 대신에 check(cardList.get(0)); 하면 되지 않나??
 		card1 = cardList.get(0);
 		cardList.remove(0);
-		check();
+		check(cardList.get(0));
 		card2 = cardList.get(0);
 		cardList.remove(0);
 	}
-	
-	public void check() {
-		check(cardList.get(0));
-	}
-	
+
 	public void check(Card card) {
 		boolean check = true;
-		
+
 		while (check) {
 			if (card.getCardType() == 4 || card.getCardType() == 5) {
 				cardList.remove(0);
@@ -116,13 +114,22 @@ public class GameBoard {
 	public void paint(Graphics g) {
 
 		g.drawImage(img, x, y, x + 530, y + 240, 0, 0, img.getWidth(null), img.getHeight(null), GameCanvas.instance);
+
+		card1.setX(cardDeck.getX() + cardDeck.getWidth() + 20);
+		card1.setY(cardDeck.getY());
+		card2.setX(card1.getX() + cardDeck.getWidth() + 20);
+		card2.setY(cardDeck.getY());
+
 		cardDeck.paint(g);
-		
-//		g.drawImage(card1.getImg(), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, GameCanvas.instance);
-//		g.drawImage(card2.getImg(), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, GameCanvas.instance);
+		card1.paint(g);
+		card2.paint(g);
 
 //		g.drawImage(img, x, 0,x+500,640,0,0,img.getWidth(null),img.getHeight(null), GameCanvas.instance);
 
+	}
+	
+	public void update() {
+		
 	}
 
 	public CardDeck getCardDeck() {
@@ -156,7 +163,5 @@ public class GameBoard {
 	public void setCardList(List<Card> cardList) {
 		this.cardList = cardList;
 	}
-	
-	
 
 }

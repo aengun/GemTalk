@@ -19,11 +19,12 @@ public class CardDeck extends Card {
 	}
 
 	public CardDeck(int x, int y) {
+		super(x, y);
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		img = tk.getImage("res/cardDeck.png");
 
-		this.x = x + 20;
-		this.y = y + 20;
+		this.x = x; // 355 + 20
+		this.y = y; // 225 + 20
 	}
 
 	@Override
@@ -32,6 +33,46 @@ public class CardDeck extends Card {
 		height = img.getHeight(null);
 
 		g.drawImage(img, x, y, GameCanvas.instance);
+	}
+
+	public Image getImg() {
+		return img;
+	}
+
+	public void setImg(Image img) {
+		this.img = img;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 }

@@ -67,7 +67,7 @@ public class GameCanvas extends Canvas {
 						// 얘를 해줘야 repaint를 할때 변경된 부분이 적용되어 다시 그려진다.
 						playerBoards[i].update(); 
 					}
-					gameBoard.update();
+					//gameBoard.update(); 얘말고 setCard방식으로..?
 
 					// repaint() -> Canvas.update()가 화면을 지움 -> Canvas.paint(g)가 다시 그림
 					repaint(); // 이걸 안하면 시작화면에서 그대로 멈춤(그린걸 지우고 다시 그리지를 않으므로)
@@ -100,9 +100,9 @@ public class GameCanvas extends Canvas {
 
 				if (card1.choiceCard(x, y)) {
 					card1.zoomIn();// zoomin
-					Card temp = cardList.get(0);
 
-					gameBoard.check(temp);
+					gameBoard.check(cardList.get(0));
+					Card temp = cardList.get(0);
 
 					playerBoards[playTurn].getPlayer().answer(playTurn + 1);
 					for (int i = 0; i < 4; i++)
@@ -116,15 +116,17 @@ public class GameCanvas extends Canvas {
 					}
 					card1.zoomOut();// zoomout 객체는 살아있지만 paint는 안되는
 
-//					gameBoard.setCard1(temp);
-
+					gameBoard.setCard1(temp);
+					cardList.remove(0);
+					gameBoard.setCardList(cardList);
+					
 					playTurn = ++playTurn % 4;
 
 				} else if (card2.choiceCard(x, y)) {
 					card2.zoomIn();
 
+					gameBoard.check(cardList.get(0));
 					Card temp = cardList.get(0);
-					gameBoard.check(temp);
 
 					playerBoards[playTurn].getPlayer().answer(playTurn + 1);
 					for (int i = 0; i < 4; i++)
@@ -139,7 +141,9 @@ public class GameCanvas extends Canvas {
 
 					card2.zoomOut();
 
-//					gameBoard.setCard2(temp);
+					gameBoard.setCard2(temp);
+					cardList.remove(0);
+					gameBoard.setCardList(cardList);
 
 					playTurn = ++playTurn % 4;
 				} else if (cardDeck.choiceCard(x, y)) {

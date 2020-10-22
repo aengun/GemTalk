@@ -11,6 +11,7 @@ public class MissionCard {
 
 	// private int cardWidth = 102; // 보석 뒤 배경
 	// private int cardHeight = 200;
+
 	private int gemWidth = 25; // 보석
 	private int gemHeight = 25;
 
@@ -98,7 +99,6 @@ public class MissionCard {
 			cardStatus[i] = new CardStatus(gemX + 35, temp + 20, status);
 			temp += 35;
 		}
-
 	}
 
 	public void paint(Graphics g) {

@@ -6,9 +6,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 import prj.canvas.GameCanvas;
@@ -25,7 +22,6 @@ public class GameFrame extends Frame {
 		instance = this;
 
 		introCanvas = new IntroCanvas();
-		ruleCanvas = new RuleCanvas();
 		gameCanvas = new GameCanvas();
 		add(introCanvas);
 		setSize(1250, 730);
@@ -33,17 +29,17 @@ public class GameFrame extends Frame {
 
 		File bgm = new File("res/bgm.wav");
 
-//		try {
+//      try {
 //
-//			AudioInputStream stream = AudioSystem.getAudioInputStream(bgm);
-//			Clip clip = AudioSystem.getClip();
-//			clip.open(stream);
-//			clip.start();
+//         AudioInputStream stream = AudioSystem.getAudioInputStream(bgm);
+//         Clip clip = AudioSystem.getClip();
+//         clip.open(stream);
+//         clip.start();
 //
-//		} catch (Exception e) {
+//      } catch (Exception e) {
 //
-//			e.printStackTrace();
-//		}
+//         e.printStackTrace();
+//      }
 
 		addWindowListener(new WindowAdapter() {
 
@@ -60,23 +56,18 @@ public class GameFrame extends Frame {
 
 	}
 
-	public void switchCanvas(RuleCanvas oldCanvas, Class newCanvas)
-			throws InstantiationException, IllegalAccessException {
+	public void switchCanvas(Canvas oldCanvas, Class newCanvas) throws InstantiationException, IllegalAccessException {
+		Canvas canvas;
+//      remove(oldCanvas);
+		if (newCanvas.getName().equals("prj.canvas.GameCanvas"))
+			canvas = this.gameCanvas;
+		else
+			canvas = (Canvas) newCanvas.newInstance();
 
-		remove(oldCanvas);
-
-		add((Canvas) newCanvas.newInstance());
+		add(canvas);
+		oldCanvas.setVisible(false);
 		revalidate();
 
-	}
-
-	public void switchCanvas(IntroCanvas oldCanvas, Class newCanvas)
-			throws InstantiationException, IllegalAccessException {
-
-		remove(oldCanvas);
-
-		add((Canvas) newCanvas.newInstance());
-		revalidate();
 	}
 
 }

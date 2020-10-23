@@ -79,11 +79,11 @@ public class GameBoard {
 		// 섞은 배열을 어레이리스트에 넣기
 		for (int i = 0; i < 50; i++)
 			cardList.add(cards[i]);
-		
-		check(cardList.get(0)); 
+
+		check(cardList.get(0));
 		card1 = cardList.get(0); // 이거때문에 고정
 		cardList.remove(0);
-		
+
 		check(cardList.get(0));
 		card2 = cardList.get(0);
 		cardList.remove(0);
@@ -100,7 +100,7 @@ public class GameBoard {
 				check = false;
 			}
 		}
-		
+
 	}
 
 	public void shuffle() {
@@ -126,7 +126,7 @@ public class GameBoard {
 		cardDeck.paint(g);
 		card1.paint(g);
 		card2.paint(g);
-		
+
 //		g.drawImage(img, x, 0,x+500,640,0,0,img.getWidth(null),img.getHeight(null), GameCanvas.instance);
 
 	}
@@ -139,7 +139,7 @@ public class GameBoard {
 //		check(cardList.get(0));
 //		card2 = cardList.get(0);
 //		cardList.remove(0);
-		
+
 		// 위의 6줄 주석을 풀면 왜 질문카드를 딱 1번 클릭하면 스레드가 멈추는거지?
 	}
 

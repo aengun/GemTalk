@@ -96,7 +96,7 @@ public class GameCanvas extends Canvas {
 				Card cardDeck = gameBoard.getCardDeck();
 
 				List<Card> cardList = gameBoard.getCardList();
-
+				
 				if (card1.choiceCard(x, y)) {
 					card1.zoomIn();// zoomin
 
@@ -144,6 +144,7 @@ public class GameCanvas extends Canvas {
 					cardList.remove(0);
 					gameBoard.setCardList(cardList);
 					playTurn = ++playTurn % 4;
+					
 				} else if (cardDeck.choiceCard(x, y)) {
 					cardList.get(0).zoomIn();
 
@@ -160,7 +161,7 @@ public class GameCanvas extends Canvas {
 									voteCount++;
 						}
 					if (voteCount >= 2) {
-						cardType = card2.getCardType();// move - myCard 연계
+						cardType = cardList.get(0).getCardType();// move - myCard 연계
 						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
 					}
 					System.out.println(voteCount);

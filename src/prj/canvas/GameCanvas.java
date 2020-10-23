@@ -55,7 +55,31 @@ public class GameCanvas extends Canvas {
 //			}
 //		});
 
-		
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					
+					for (int i = 0; i < 4; i++) {
+						// 얘를 해줘야 repaint를 할때 변경된 부분이 적용되어 다시 그려진다.
+						playerBoards[i].update(); 
+					}
+					//gameBoard.update(); 얘말고 setCard방식으로..?
+
+					// repaint() -> Canvas.update()가 화면을 지움 -> Canvas.paint(g)가 다시 그림
+					repaint(); // 이걸 안하면 시작화면에서 그대로 멈춤(그린걸 지우고 다시 그리지를 않으므로)
+
+					try {
+						Thread.sleep(500); // 60fps(1초에 60번 while문 반복)
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
+				}
+
+			}
+		}).start();
 
 		addMouseListener(new MouseAdapter() {
 
@@ -65,6 +89,7 @@ public class GameCanvas extends Canvas {
 				int y = e.getY();
 				int voteCount = 0;
 				int cardType = 0;
+				System.out.println("그냥 마우스 클릭되는지 확인");
 
 				Card card1 = gameBoard.getCard1();
 				Card card2 = gameBoard.getCard2();
@@ -74,9 +99,9 @@ public class GameCanvas extends Canvas {
 
 				if (card1.choiceCard(x, y)) {
 					card1.zoomIn();// zoomin
-					Card temp = cardList.get(0);
 
-					gameBoard.check(temp);
+					gameBoard.check(cardList.get(0));
+					Card temp = cardList.get(0);
 
 					playerBoards[playTurn].getPlayer().answer(playTurn + 1);
 					for (int i = 0; i < 4; i++)
@@ -89,19 +114,18 @@ public class GameCanvas extends Canvas {
 						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
 					}
 					card1.zoomOut();// zoomout 객체는 살아있지만 paint는 안되는
-
 					
 					gameBoard.setCard1(temp);
 					cardList.remove(0);
 					gameBoard.setCardList(cardList);
-
+          
 					playTurn = ++playTurn % 4;
 
 				} else if (card2.choiceCard(x, y)) {
 					card2.zoomIn();
 
+					gameBoard.check(cardList.get(0));
 					Card temp = cardList.get(0);
-					gameBoard.check(temp);
 
 					playerBoards[playTurn].getPlayer().answer(playTurn + 1);
 					for (int i = 0; i < 4; i++)
@@ -119,7 +143,6 @@ public class GameCanvas extends Canvas {
 					gameBoard.setCard2(temp);
 					cardList.remove(0);
 					gameBoard.setCardList(cardList);
-					
 					playTurn = ++playTurn % 4;
 				} else if (cardDeck.choiceCard(x, y)) {
 					cardList.get(0).zoomIn();

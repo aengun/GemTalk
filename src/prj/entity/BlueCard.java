@@ -6,26 +6,30 @@ import java.awt.Toolkit;
 
 import prj.canvas.GameCanvas;
 
-public class BlueCard extends QuestionCard {
+public class BlueCard extends Card {
 
-	private Image img;
 
 	public BlueCard() {
 		this(0);
 	}
 
 	public BlueCard(int order) {
-
-		setQuestionOrder(order);
+		super(order,"res/blueCard.png");
+		
 		setCardType(3);
 
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		img = tk.getImage("res/questionCard.png");
 	}
 
 	@Override
 	public void paint(Graphics g) {
-
-		g.drawImage(img, getX(), getY(), GameCanvas.instance);
+		Image img = getImg(); 
+		int x = getX();
+		int y = getY();
+		int w = img.getWidth(null)/10;
+		int h = img.getHeight(null);
+		
+		int order = getQuestionOrder();
+		System.out.println("or: "+order);
+		g.drawImage(img, x, y,x+154,y+218,0+w*order,0,w+w*order,h, GameCanvas.instance);
 	}
 }

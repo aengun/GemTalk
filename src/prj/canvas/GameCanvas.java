@@ -7,8 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
-import java.util.Random;
-
 import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
 import prj.board.GameBoard;
@@ -27,17 +25,17 @@ public class GameCanvas extends Canvas {
 	private MyCard myCard; // 인터페이스 때문에 정의
 	private GameBoard gameBoard;
 	private PlayerBoard[] playerBoards = new PlayerBoard[4]; // 플레이어 보드 4개 생성
-	private Random rand;
+
 
 	public GameCanvas() {
 		instance = this;
+		
 		gameBackground = new GameBackground();
 		playTurn = 0;
 		playerBoards[0] = new PlayerBoard(0, 0, 1);
 		playerBoards[1] = new PlayerBoard(700, 0, 2);
 		playerBoards[2] = new PlayerBoard(0, 450, 3);
 		playerBoards[3] = new PlayerBoard(700, 450, 4);
-		rand = new Random();
 
 		int gameBoardX = playerBoards[0].getPlayer().getX();
 		int gameBoardY = playerBoards[0].getPlayer().getY() + 180;
@@ -116,11 +114,11 @@ public class GameCanvas extends Canvas {
 						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
 					}
 					card1.zoomOut();// zoomout 객체는 살아있지만 paint는 안되는
-
+					
 					gameBoard.setCard1(temp);
 					cardList.remove(0);
 					gameBoard.setCardList(cardList);
-					
+          
 					playTurn = ++playTurn % 4;
 
 				} else if (card2.choiceCard(x, y)) {
@@ -145,7 +143,6 @@ public class GameCanvas extends Canvas {
 					gameBoard.setCard2(temp);
 					cardList.remove(0);
 					gameBoard.setCardList(cardList);
-
 					playTurn = ++playTurn % 4;
 				} else if (cardDeck.choiceCard(x, y)) {
 					cardList.get(0).zoomIn();
@@ -162,6 +159,10 @@ public class GameCanvas extends Canvas {
 								if (playerBoards[i].getPlayer().vote() == 0)
 									voteCount++;
 						}
+					if (voteCount >= 2) {
+						cardType = card2.getCardType();// move - myCard 연계
+						playerBoards[playTurn].getPlayer().getMyCard().moveToPlayer(cardType);
+					}
 					System.out.println(voteCount);
 					cardList.remove(0);
 					gameBoard.setCardList(cardList);
@@ -177,12 +178,40 @@ public class GameCanvas extends Canvas {
 			}
 
 		});
+		
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				System.out.println("Thread start");
+				while (true) {
+					
+					for (int i = 0; i < 4; i++) {
+						// 얘를 해줘야 repaint를 할때 변경된 부분이 적용되어 다시 그려진다.
+						playerBoards[i].update(); 
+					}
+					gameBoard.update();
+
+					// repaint() -> Canvas.update()가 화면을 지움 -> Canvas.paint(g)가 다시 그림
+					repaint(); // 이걸 안하면 시작화면에서 그대로 멈춤(그린걸 지우고 다시 그리지를 않으므로)
+
+					try {
+						Thread.sleep(17); // 60fps(1초에 60번 while문 반복)
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
+				}
+
+			}
+		}).start();
 
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		Image buf = this.createImage(this.getWidth(), getHeight());
+		System.out.println("paint start");
+		Image buf = this.createImage(getWidth(), getHeight());
 		Graphics bg = buf.getGraphics();
 
 		gameBackground.paint(bg);

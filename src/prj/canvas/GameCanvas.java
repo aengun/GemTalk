@@ -73,7 +73,7 @@ public class GameCanvas extends Canvas {
 					repaint(); // 이걸 안하면 시작화면에서 그대로 멈춤(그린걸 지우고 다시 그리지를 않으므로)
 
 					try {
-						Thread.sleep(17); // 60fps(1초에 60번 while문 반복)
+						Thread.sleep(500); // 60fps(1초에 60번 while문 반복)
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -91,6 +91,7 @@ public class GameCanvas extends Canvas {
 				int y = e.getY();
 				int voteCount = 0;
 				int cardType = 0;
+				System.out.println("그냥 마우스 클릭되는지 확인");
 
 				Card card1 = gameBoard.getCard1();
 				Card card2 = gameBoard.getCard2();
@@ -162,6 +163,8 @@ public class GameCanvas extends Canvas {
 									voteCount++;
 						}
 					System.out.println(voteCount);
+					cardList.remove(0);
+					gameBoard.setCardList(cardList);
 					playTurn = ++playTurn % 4;
 				}
 
